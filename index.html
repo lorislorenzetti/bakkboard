@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bakkboard — The complete Rocket League toolkit</title>
+  <meta name="description" content="Bakkboard tracks your Rocket League sessions in real time — live stats, win probability, MMR trends, overlays, cosmetics swap, workshop maps and more. Free, portable, no install." />
+  <meta property="og:title" content="Bakkboard — The complete Rocket League toolkit" />
+  <meta property="og:description" content="The best BakkesMod alternative in 2026. Live stats, win probability, MMR trends, overlays, cosmetics swap and workshop maps for Rocket League. Free, portable, no install." />
+  <meta property="og:image" content="https://bakkboard.gg/screenshots/og_image.png" />
+  <meta property="og:url" content="https://bakkboard.gg" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Bakkboard — The complete Rocket League toolkit" />
+  <meta name="twitter:description" content="The best BakkesMod alternative in 2026. Live stats, win probability, MMR trends, overlays, cosmetics swap and workshop maps for Rocket League. Free, portable, no install." />
+  <meta name="twitter:image" content="https://bakkboard.gg/screenshots/og_image.png" />
+  <meta name="keywords" content="Rocket League tracker, Rocket League stats, MMR tracker, Rocket League overlay, Rocket League cosmetics, workshop maps, Rocket League session stats, BakkesMod alternative, BakkesMod 2026" />
+  <link rel="canonical" href="https://bakkboard.gg" />
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+  <link rel="icon" type="image/x-icon" href="icons/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0b0f16;
+      --bg-panel:  #131920;
+      --bg-card:   #161d28;
+      --border:    #252d3a;
+      --text:      #e4ecf4;
+      --text-dim:  #7a8899;
+      --blue:      #58a6ff;
+      --green:     #3fb950;
+      --radius:    10px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(16,22,32,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      height: 64px;
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 48px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .nav-logo img {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+    }
+    .nav-links { display: flex; gap: 24px; align-items: center; }
+    .nav-links a {
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.15s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .btn-nav-dl {
+      background: var(--blue);
+      color: #fff;
+      font-weight: 600;
+      font-size: 13px;
+      padding: 7px 16px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+    .nav-links .btn-nav-dl { color: #fff; }
+    .btn-nav-dl:hover { opacity: 0.85; color: #fff; }
+
+    /* ── HERO ── */
+    .hero {
+      text-align: center;
+      padding: 80px 24px 24px;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(88,166,255,0.12);
+      color: var(--blue);
+      border: 1px solid rgba(88,166,255,0.25);
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 12px;
+      margin-bottom: 20px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .hero h1 {
+      font-size: clamp(32px, 6vw, 56px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    .hero h1 span { color: var(--blue); }
+    .hero p {
+      font-size: 18px;
+      color: var(--text-dim);
+      max-width: 560px;
+      margin: 0 auto 36px;
+    }
+    .hero-cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--blue);
+      color: #fff;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 13px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: opacity 0.15s, transform 0.1s;
+    }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--text-dim);
+      font-weight: 600;
+      font-size: 15px;
+      padding: 13px 28px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .btn-secondary:hover { border-color: var(--text-dim); color: var(--text); }
+    .hero-alt {
+      display: inline-block;
+      background: rgba(88,166,255,0.1);
+      color: var(--blue);
+      border: 1px solid rgba(88,166,255,0.25);
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 5px 14px;
+      margin-top: -4px;
+      margin-bottom: 8px;
+      letter-spacing: 0.04em;
+      animation: fadeUp 0.6s ease both;
+      animation-delay: 0.25s;
+    }
+    .hero-note {
+      margin-top: 14px;
+      font-size: 12px;
+      color: var(--text-dim);
+    }
+    .dl-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0;
+      font-size: 12px;
+      font-weight: 600;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .dl-badge-left {
+      background: #21262d;
+      color: var(--text-dim);
+      padding: 5px 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+    .dl-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 6px rgba(63,185,80,0.8);
+      animation: pulse-dot 2s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+    .dl-badge-right {
+      background: #1a2332;
+      color: var(--text);
+      padding: 5px 10px;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.45; transform: scale(0.7); }
+    }
+
+    /* ── VIDEO ── */
+    .video-wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: #000;
+      aspect-ratio: 16/9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .video-wrap video,
+    .video-wrap iframe {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* ── SECTION ── */
+    section { padding: 0; }
+    section:nth-of-type(even) { background: #0f151e; }
+    .section-inner { padding: 80px 48px; max-width: 1200px; margin: 0 auto; }
+    .section-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-size: clamp(24px, 4vw, 36px);
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      margin-bottom: 12px;
+    }
+    .section-sub {
+      font-size: 16px;
+      color: var(--text-dim);
+      max-width: 520px;
+      margin-bottom: 48px;
+    }
+
+    /* ── FEATURES GRID ── */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 14px;
+    }
+    .feature-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      transition: border-color 0.2s;
+    }
+    .feature-card:hover { border-color: rgba(88,166,255,0.3); }
+    .feature-icon { font-size: 22px; margin-bottom: 10px; }
+    .feature-name {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .feature-desc {
+      font-size: 13px;
+      color: var(--text-dim);
+      line-height: 1.55;
+    }
+    .feature-desc ul {
+      padding-left: 16px;
+      margin: 0;
+      line-height: 1.8;
+    }
+
+    /* ── FEATURE SPOTLIGHT ── */
+    .spotlight {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 72px;
+      align-items: center;
+    }
+    .spotlight.rev { grid-template-columns: 1.5fr 1fr; }
+    .spotlight.rev .spotlight-media { order: -1; }
+    .spotlight-content {}
+    .spotlight-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 14px;
+    }
+    .spotlight-tag-icon { font-size: 16px; }
+    .spotlight-title {
+      font-size: clamp(22px, 3vw, 30px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+      line-height: 1.15;
+    }
+    .spotlight-bullets {
+      padding-left: 0;
+      list-style: none;
+      color: var(--text-dim);
+      font-size: 14px;
+      line-height: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .spotlight-bullets li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .spotlight-bullets li::before {
+      content: '';
+      flex-shrink: 0;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--blue);
+      margin-top: 7px;
+    }
+    .spotlight-media {
+      position: relative;
+    }
+    .spotlight-media img {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      box-shadow: 0 12px 48px rgba(0,0,0,0.5);
+      display: block;
+    }
+    .spotlight-media::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 12px;
+      background: rgba(0,0,0,0.18);
+      pointer-events: none;
+    }
+
+    /* ── OTHER FEATURES GRID ── */
+    .other-features {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .how-it-works {
+    }
+    .how-it-works .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 12px;
+    }
+    .how-it-works h2 {
+      font-size: clamp(22px, 3.5vw, 32px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+    .how-it-works .section-sub {
+      color: var(--text-dim);
+      font-size: 15px;
+      margin-bottom: 40px;
+      max-width: 560px;
+    }
+    .hiw-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    .hiw-card {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px 26px;
+    }
+    .hiw-card-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .hiw-card-title .hiw-icon {
+      width: 28px; height: 28px;
+      border-radius: 7px;
+      background: rgba(88,166,255,.12);
+      border: 1px solid rgba(88,166,255,.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+    .hiw-card p {
+      font-size: 13px;
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
+    .hiw-note {
+      margin-top: 28px;
+      padding: 18px 22px;
+      background: rgba(63,185,80,.07);
+      border: 1px solid rgba(63,185,80,.2);
+      border-radius: 8px;
+      font-size: 13px;
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
+    .hiw-note strong { color: #3fb950; }
+    @media (max-width: 640px) {
+      .hiw-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── DOWNLOAD CTA ── */
+    .download-cta {
+      text-align: center;
+      padding: 80px 24px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .download-cta h2 {
+      font-size: clamp(24px, 4vw, 36px);
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+    .download-cta p {
+      color: var(--text-dim);
+      font-size: 16px;
+      margin-bottom: 32px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 28px 24px;
+      font-size: 13px;
+      color: var(--text-dim);
+    }
+    footer a { color: var(--text-dim); text-decoration: none; }
+    footer a:hover { color: var(--text); }
+
+    /* ── ENTRANCE ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero h1       { animation: fadeUp 0.6s ease both; animation-delay: 0.05s; }
+    .hero p        { animation: fadeUp 0.6s ease both; animation-delay: 0.18s; }
+    .hero-cta      { animation: fadeUp 0.6s ease both; animation-delay: 0.30s; }
+    .hero-note     { animation: fadeUp 0.6s ease both; animation-delay: 0.40s; }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal-left.visible,
+    .reveal-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    @media (max-width: 900px) {
+      .spotlight, .spotlight.rev {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .spotlight.rev .spotlight-media { order: 0; }
+      .other-features { grid-template-columns: repeat(2, 1fr); }
+      .section-inner { padding: 56px 24px; }
+    }
+    @media (max-width: 640px) {
+      .nav-inner { padding: 0 16px; }
+      .nav-links { gap: 12px; }
+      .other-features { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#">
+      <img src="icons/icon-192.png" alt="Bakkboard logo" style="width:28px;height:28px;border-radius:6px;vertical-align:middle;margin-right:8px;" />
+      <span>Bakkboard</span>
+    </a>
+    <div class="nav-links">
+      <a href="#how-it-works" style="color:var(--text-dim);text-decoration:none;font-size:14px;">How it works</a>
+      <a href="/blog/" style="color:var(--text-dim);text-decoration:none;font-size:14px;">Blog</a>
+      <a class="btn-nav-dl" href="https://github.com/lorislorenzetti/bakkboard/releases/latest/download/Bakkboard.exe">Download</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>The complete<br><span>Rocket League</span> toolkit.</h1>
+  <p>Live stats, win probability, MMR trends, overlays, cosmetics swap, workshop maps and more — all in one portable app.</p>
+  <p class="hero-alt">The best BakkesMod alternative in 2026.</p>
+  <div class="hero-cta">
+    <a class="btn-primary" href="https://github.com/lorislorenzetti/bakkboard/releases/latest/download/Bakkboard.exe">
+      ↓ Download Bakkboard.exe
+    </a>
+    <a class="btn-secondary" href="https://github.com/lorislorenzetti/bakkboard" target="_blank">
+      View on GitHub
+    </a>
+  </div>
+  <p class="hero-note" style="margin-top:18px">
+    <span class="dl-badge">
+      <span class="dl-badge-left"><span class="dl-dot"></span>downloads</span>
+      <span class="dl-badge-right" id="dl-count">—</span>
+    </span>
+  </p>
+</div>
+
+<!-- LIVE MATCH -->
+<section>
+<div class="section-inner">
+  <div class="spotlight">
+    <div class="spotlight-content reveal-left">
+      <div class="spotlight-tag"><span class="spotlight-tag-icon">⚡</span>Live Match</div>
+      <div class="spotlight-title">Everything happening<br>on the field, live.</div>
+      <ul class="spotlight-bullets">
+        <li>Scoreboard with goals, assists, saves, shots, touches, crossbars and demos</li>
+        <li>Live ball possession bar</li>
+        <li>Event log with goal speeds and hard hits</li>
+        <li>Tracker.gg rank, peak rank and platform badge for every player — including those who left mid-match</li>
+      </ul>
+    </div>
+    <div class="spotlight-media reveal-right">
+      <img src="screenshots/Bakkboard_1.gif" alt="Bakkboard – live match" />
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- PLAYER TRACKING -->
+<section>
+<div class="section-inner">
+  <div class="spotlight rev">
+    <div class="spotlight-content reveal-right">
+      <div class="spotlight-tag"><span class="spotlight-tag-icon">👥</span>Player Tracking</div>
+      <div class="spotlight-title">Know who you're<br>playing against.</div>
+      <ul class="spotlight-bullets">
+        <li>Track anyone from the scoreboard</li>
+        <li>Encounter badges with teammate vs opponent history on hover</li>
+        <li>Friends panel: compare, hide or untrack per player</li>
+        <li>Open any player's Tracker.gg profile directly inside the app</li>
+      </ul>
+    </div>
+    <div class="spotlight-media reveal-left">
+      <img src="screenshots/Bakkboard_2.gif" alt="Player tracking – Tracker.gg from scoreboard" />
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- CHARTS -->
+<section>
+<div class="section-inner">
+  <div class="spotlight">
+    <div class="spotlight-content reveal-left">
+      <div class="spotlight-tag"><span class="spotlight-tag-icon">📈</span>Charts &amp; Analytics</div>
+      <div class="spotlight-title">Visualize your<br>progress over time.</div>
+      <ul class="spotlight-bullets">
+        <li>Local: W/L timeline, play-style trends and shot tracking with custom date ranges</li>
+        <li>Tracker.gg: rating progression, lifetime stats, avg performance and play-style tables</li>
+        <li>Switch between your profile and any tracked player in one click</li>
+      </ul>
+    </div>
+    <div class="spotlight-media reveal-right">
+      <img src="screenshots/Bakkboard_3.gif" alt="Charts – local analytics" />
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- OVERLAYS -->
+<section>
+<div class="section-inner">
+  <div class="spotlight rev">
+    <div class="spotlight-content reveal-right">
+      <div class="spotlight-tag"><span class="spotlight-tag-icon">🖥️</span>Overlays</div>
+      <div class="spotlight-title">Your stats,<br>always in view.</div>
+      <ul class="spotlight-bullets">
+        <li><strong>Stats Bar</strong> — W/L, win rate, streak and MMR delta. Switches playlist automatically</li>
+        <li><strong>Rank Badge</strong> — current rank, division and MMR. Switches playlist automatically</li>
+        <li><strong>Match Scoreboard</strong> — both teams, scores and rank icons during active matches</li>
+        <li><strong>Magic Rank</strong> — rank icons overlaid on the in-game scoreboard. Requires one-time calibration</li>
+        <li>All overlays are positionable, scalable and opacity-adjustable</li>
+        <li>Optional auto-hide when Rocket League loses focus</li>
+      </ul>
+    </div>
+    <div class="spotlight-media reveal-left">
+      <img src="screenshots/Bakkboard_4.gif" alt="Bakkboard overlays" />
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- COSMETICS -->
+<section>
+<div class="section-inner">
+  <div class="spotlight">
+    <div class="spotlight-content reveal-left">
+      <div class="spotlight-tag"><span class="spotlight-tag-icon">🎨</span>Cosmetics Swap</div>
+      <div class="spotlight-title">Custom decals,<br>wheels and boosts.</div>
+      <ul class="spotlight-bullets">
+        <li>Apply custom decals, wheels and boosts via UPK file patching</li>
+        <li>Select car body first — each body keeps its own decal slot</li>
+        <li>Originals backed up and restored in one click</li>
+        <li>No runtime injection — files are swapped at rest, not during gameplay</li>
+      </ul>
+    </div>
+    <div class="spotlight-media reveal-right">
+      <img src="screenshots/Bakkboard_5.gif" alt="Cosmetics swap" />
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- WORKSHOP -->
+<section>
+<div class="section-inner">
+  <div class="spotlight rev">
+    <div class="spotlight-content reveal-right">
+      <div class="spotlight-tag"><span class="spotlight-tag-icon">🗺️</span>Workshop Maps</div>
+      <div class="spotlight-title">Train on any map,<br>in one click.</div>
+      <ul class="spotlight-bullets">
+        <li>Browse, search and load maps into Free Play in one click</li>
+        <li>Sort by downloads, rating, name, size or date</li>
+        <li>My Maps library for instant reuse of cached maps</li>
+        <li>Restore or remove the active map; delete from cache when done</li>
+      </ul>
+    </div>
+    <div class="spotlight-media reveal-left">
+      <img src="screenshots/Bakkboard_6.gif" alt="Workshop maps" />
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- OTHER FEATURES -->
+<section>
+<div class="section-inner">
+  <div class="section-label reveal">Also included</div>
+  <h2 class="section-title reveal" style="margin-bottom:32px">More features.</h2>
+  <div class="other-features">
+    <div class="feature-card reveal" style="transition-delay:0.0s">
+      <div class="feature-icon">🎲</div>
+      <div class="feature-name">Win Probability</div>
+      <div class="feature-desc"><ul>
+        <li>Live bar updated every second</li>
+        <li>Blends a calibrated model with your historical match data</li>
+        <li>Factors in score, momentum, shot conversion, possession, touches and demos</li>
+        <li>Exclude individual matches from training without deleting them</li>
+      </ul></div>
+    </div>
+    <div class="feature-card reveal" style="transition-delay:0.1s">
+      <div class="feature-icon">📊</div>
+      <div class="feature-name">Session Stats</div>
+      <div class="feature-desc"><ul>
+        <li>W/L, win rate, streak and MMR delta — filtered by period and playlist</li>
+        <li>W/L sparkline and current rank badge</li>
+        <li>Detailed stats: touches, crossbars, avg goal speed and more</li>
+        <li>Toggle between totals and per-match averages</li>
+        <li>Side-by-side comparison with tracked friends</li>
+        <li>Pause tracking so upcoming matches aren't recorded</li>
+      </ul></div>
+    </div>
+    <div class="feature-card reveal" style="transition-delay:0.2s">
+      <div class="feature-icon">🕒</div>
+      <div class="feature-name">Match History</div>
+      <div class="feature-desc"><ul>
+        <li>Every match saved with full scoreboard, event log, possession and rank data</li>
+        <li>Reopen any past match exactly as it happened</li>
+        <li>Exclude from analytics, WP training, or both — without deleting</li>
+        <li>Choose whether to stay on scoreboard or return to waiting screen after a match</li>
+      </ul></div>
+    </div>
+    <div class="feature-card reveal" style="transition-delay:0.3s">
+      <div class="feature-icon">👤</div>
+      <div class="feature-name">Multi-Account</div>
+      <div class="feature-desc"><ul>
+        <li>Track multiple accounts independently</li>
+        <li>Switch at any time to view stats, history and ranks per account</li>
+        <li>Merge renamed accounts to keep history together</li>
+      </ul></div>
+    </div>
+    <div class="feature-card reveal" style="transition-delay:0.4s">
+      <div class="feature-icon">🔒</div>
+      <div class="feature-name">Privacy First</div>
+      <div class="feature-desc"><ul>
+        <li>All data stored locally under %LocalAppData%\Bakkboard</li>
+        <li>No telemetry, no account required</li>
+        <li>Only Tracker.gg is contacted — for rank lookups, on your behalf</li>
+        <li>Does not inject DLLs or modify game memory</li>
+      </ul></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how-it-works">
+<div class="section-inner">
+<div class="how-it-works">
+  <p class="section-label reveal">No injection · No ban risk</p>
+  <h2 class="reveal">How Bakkboard works</h2>
+  <p class="section-sub reveal">Bakkboard never touches the game process. Easy Anti-Cheat never sees it — because there is nothing to see.</p>
+  <div class="hiw-grid">
+    <div class="hiw-card reveal">
+      <div class="hiw-card-title"><span class="hiw-icon">📊</span>Stats &amp; match data</div>
+      <p>Read from Rocket League's local Stats API — the same data the game exposes to the operating system. No process injection, no memory reading, nothing hooking into the game.</p>
+    </div>
+    <div class="hiw-card reveal">
+      <div class="hiw-card-title"><span class="hiw-icon">🎨</span>Cosmetics swap</div>
+      <p>UPK files are patched on disk before the game launches. The game loads them through its normal file loading — exactly like loading any other game asset. Easy Anti-Cheat does not scan file content at rest.</p>
+    </div>
+    <div class="hiw-card reveal">
+      <div class="hiw-card-title"><span class="hiw-icon">🖥️</span>Overlays</div>
+      <p>Separate windows rendered by the OS as normal applications. They sit on top of the screen just like a browser or Discord — completely outside the game process.</p>
+    </div>
+    <div class="hiw-card reveal">
+      <div class="hiw-card-title"><span class="hiw-icon">🗺️</span>Workshop maps</div>
+      <p>Map files are copied to the correct game directory before launch, the same way the game expects them to be loaded. No runtime modification of any kind.</p>
+    </div>
+  </div>
+  <div class="hiw-note reveal">
+    <strong>No ban risk.</strong> Bakkboard does not bypass or interfere with Easy Anti-Cheat in any way. It simply does not interact with anything the anti-cheat monitors. This is the fundamental difference from BakkesMod, which required DLL injection into the game process — the exact technique Easy Anti-Cheat blocks.
+  </div>
+</div>
+</div>
+</section>
+
+<!-- DOWNLOAD CTA -->
+<section>
+<div class="download-cta">
+  <h2 class="reveal">Ready to track your sessions?</h2>
+  <a class="btn-primary reveal" style="transition-delay:0.15s" href="https://github.com/lorislorenzetti/bakkboard/releases/latest/download/Bakkboard.exe">
+    ↓ Download Bakkboard.exe
+  </a>
+  <p class="hero-note reveal" style="margin-top:16px;transition-delay:0.28s">Windows &nbsp;·&nbsp; Free &nbsp;·&nbsp; No account required</p>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  Made with ♥ by <a href="https://github.com/lorislorenzetti" target="_blank">Loris Lorenzetti</a>
+  &nbsp;·&nbsp;
+  <a href="https://github.com/lorislorenzetti/bakkboard" target="_blank">GitHub</a>
+  &nbsp;·&nbsp;
+  Not affiliated with Psyonix or Epic Games.
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+
+  // Live download counter with count-up animation
+  fetch('https://api.github.com/repos/lorislorenzetti/bakkboard/releases?per_page=100')
+    .then(r => r.json())
+    .then(releases => {
+      const total = releases.reduce((sum, r) =>
+        sum + r.assets.reduce((s, a) => s + a.download_count, 0), 0);
+      if (total <= 0) return;
+      const el = document.getElementById('dl-count');
+      const duration = 1400;
+      const steps = 40;
+      const interval = duration / steps;
+      let step = 0;
+      const timer = setInterval(() => {
+        step++;
+        const progress = step / steps;
+        // Ease out cubic
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(eased * total).toLocaleString();
+        if (step >= steps) {
+          clearInterval(timer);
+          el.textContent = total.toLocaleString();
+        }
+      }, interval);
+    })
+    .catch(() => {});
+</script>
+</body>
+</html>

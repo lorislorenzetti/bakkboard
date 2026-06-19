@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rocket League Win Probability — What It Means and How Bakkboard Calculates It</title>
+  <meta name="description" content="Bakkboard shows a live win probability during every Rocket League match — updated every second, blending a statistical model with your personal match history. Here is how it works." />
+  <link rel="canonical" href="https://bakkboard.gg/blog/rocket-league-win-probability.html" />
+  <link rel="icon" type="image/x-icon" href="../icons/favicon.ico" />
+  <link rel="stylesheet" href="blog.css" />
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="/">
+      <img src="../icons/icon-192.png" alt="Bakkboard" />
+      Bakkboard
+    </a>
+    <div class="nav-links">
+      <a href="/blog/">Blog</a>
+      <a class="btn-nav-dl" href="https://github.com/lorislorenzetti/bakkboard/releases/latest/download/Bakkboard.exe">Download</a>
+    </div>
+  </div>
+</nav>
+
+<div class="article-wrap">
+  <div class="article-meta">
+    <span class="article-tag">Analytics</span>
+    <span>June 2026</span>
+    <span>·</span>
+    <span>6 min read</span>
+  </div>
+
+  <h1>Rocket League Win Probability — What It Means and How to Read It</h1>
+  <p class="lead">Bakkboard calculates a live win probability for every match you play — a number updated every second that tells you how likely your team is to win based on the current state of the game and your own personal history.</p>
+
+  <img src="../screenshots/Bakkboard_1.gif" alt="Bakkboard live match with win probability" class="article-img" />
+  <p class="img-caption">Live win probability bar visible during a ranked match in Bakkboard.</p>
+
+  <h2>What win probability actually means</h2>
+  <p>Win probability is a number between 0% and 100% that represents your team's likelihood of winning the current match, given everything Bakkboard can observe about the game so far. It is not a prediction of skill or rank — it is a real-time assessment of the current match state.</p>
+  <p>At kickoff with 0–0 on the scoreboard, win probability starts near 50%. As the match progresses, events — goals, saves, shots, demos, possession swings — shift it in one direction or another. By the 4th minute of a 3–0 match, it may be above 95%. After a late equalizer, it might fall to 55%.</p>
+
+  <h2>How Bakkboard calculates it</h2>
+  <p>The calculation blends three components, each serving a different purpose:</p>
+
+  <h3>Base model — the statistical baseline</h3>
+  <p>The base model uses a Poisson process to estimate the probability that a team at its current scoring rate will score enough goals to win before time runs out. It takes into account the score, the time remaining, the current scoring momentum (recent goals per minute) and a calibration to typical Rocket League score distributions at your rank range.</p>
+  <p>This component alone gives a reasonable answer for most match states, but it treats every player equally and ignores your personal tendencies.</p>
+
+  <h3>Live adjustments — shot conversion and possession</h3>
+  <p>On top of the base model, Bakkboard applies live adjustments based on how the match is actually being played: <strong>shot conversion rate, possession percentage, touch rate, save rate and demo count</strong> during the current match. A team that is outshooting the opponent but losing on goals gets a probability boost relative to the raw score, because the underlying play suggests the score does not yet reflect the full picture.</p>
+
+  <h3>Historical component — your personal data</h3>
+  <p>The third component is personal. Bakkboard looks at your match history and finds past matches that were in a similar state — same score, similar time remaining, similar possession distribution — and calculates how often you actually won those matches. This gives the model a grounding in your specific play style and tendencies rather than relying solely on generic statistics.</p>
+  <p>The more matches you have logged in Bakkboard, the stronger this component becomes. In the first few matches, it carries low weight. Over hundreds of matches, it can meaningfully shift the probability in situatins where your history diverges from the average player's.</p>
+
+  <h2>Reading the probability display</h2>
+  <p>The win probability appears as a bar in the live match panel, colored by your team's color. A small breakdown below the bar shows the three components separately so you can see which one is driving a large swing. If the base model says 70% but your historical data says 55%, the final blended number will be somewhere between — and the breakdown explains why.</p>
+
+  <h2>After the match</h2>
+  <p>Each match's win probability history is saved along with the scoreboard and event log. You can reopen a past match and see a chart of how the probability evolved minute by minute — where it was after the first goal, how a late comeback changed the curve, and where the crossover point was between likely win and likely loss.</p>
+
+  <div class="cta-box">
+    <h3>See live win probability in every match</h3>
+    <p>Free · Built into Bakkboard · No account needed</p>
+    <a class="btn-dl" href="https://github.com/lorislorenzetti/bakkboard/releases/latest/download/Bakkboard.exe">↓ Download Bakkboard.exe</a>
+  </div>
+
+  <hr />
+  <p><a href="/blog/">← Back to Blog</a></p>
+</div>
+
+<footer>
+  <a href="/">Bakkboard</a> &nbsp;·&nbsp;
+  <a href="/blog/">Blog</a> &nbsp;·&nbsp;
+  Not affiliated with Psyonix or Epic Games.
+</footer>
+
+</body>
+</html>
