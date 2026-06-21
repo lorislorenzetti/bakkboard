@@ -65,6 +65,16 @@ No installation required. Double-click and play.
 
 ![Workshop maps](screenshots/Bakkboard_6.gif)
 
+### 🔊 Custom Sounds
+- Play custom audio clips on in-game events: goals, saves, demolitions, crossbars
+- Drag & drop audio files directly into each event category
+- Multiple sounds per category — played randomly or in order, with drag & drop reordering
+- Built-in trim editor with fade in/out support
+- Independent volume per sound and a global volume control
+- Choose whether each event triggers for you, your team or everyone
+
+![Custom sounds](screenshots/Bakkboard_7.gif)
+
 ### 🎲 Win Probability
 - Live bar updated every second
 - Blends a calibrated model with your historical match data
