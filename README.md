@@ -2,7 +2,7 @@
 
 **The complete Rocket League toolkit. The best BakkesMod alternative in 2026.**
 
-Bakkboard runs alongside Rocket League and tracks everything that happens in your matches — live stats, win probability, MMR trends, player encounters and more. Open it before a session and it takes care of the rest.
+Bakkboard runs alongside Rocket League and tracks everything that happens in your matches — live stats, win probability, MMR trends, overlays, cosmetics swap, workshop maps, custom sounds and more. Open it before a session and it takes care of the rest.
 
 ---
 
