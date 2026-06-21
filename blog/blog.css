@@ -23,27 +23,27 @@ body {
 /* NAV */
 nav {
   position: sticky; top: 0; z-index: 100;
-  background: rgba(11,15,22,0.96);
+  background: rgba(16,22,32,0.95);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
-  height: 56px;
+  height: 64px;
 }
 .nav-inner {
-  max-width: 820px; margin: 0 auto; padding: 0 24px;
+  max-width: 1200px; margin: 0 auto; padding: 0 48px;
   height: 100%; display: flex; align-items: center; justify-content: space-between;
 }
 .nav-logo {
-  font-weight: 700; font-size: 15px; color: var(--text);
-  text-decoration: none; display: flex; align-items: center; gap: 8px;
+  font-weight: 700; font-size: 16px; color: var(--text);
+  text-decoration: none; display: flex; align-items: center; gap: 10px;
 }
-.nav-logo img { width: 24px; height: 24px; border-radius: 5px; }
-.nav-links { display: flex; gap: 20px; align-items: center; }
-.nav-links a { color: var(--text-dim); text-decoration: none; font-size: 13px; transition: color .15s; }
+.nav-logo img { width: 28px; height: 28px; border-radius: 6px; }
+.nav-links { display: flex; gap: 24px; align-items: center; }
+.nav-links a { color: var(--text-dim); text-decoration: none; font-size: 14px; transition: color .15s; }
 .nav-links a:hover { color: var(--text); }
 .btn-nav-dl {
   background: var(--blue); color: #fff !important;
-  font-weight: 600; font-size: 12px;
-  padding: 6px 14px; border-radius: 6px; text-decoration: none;
+  font-weight: 600; font-size: 13px;
+  padding: 7px 16px; border-radius: 6px; text-decoration: none; transition: opacity .15s;
 }
 .btn-nav-dl:hover { opacity: .85; }
 

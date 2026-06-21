@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Changelog — Bakkboard</title>
+  <meta name="description" content="Bakkboard release history and changelog — all updates, new features and bug fixes." />
+  <link rel="canonical" href="https://bakkboard.gg/changelog" />
+  <link rel="icon" type="image/x-icon" href="icons/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0b0f16;
+      --bg-panel:  #131920;
+      --bg-card:   #161d28;
+      --border:    #252d3a;
+      --text:      #e4ecf4;
+      --text-dim:  #7a8899;
+      --blue:      #58a6ff;
+      --green:     #3fb950;
+      --radius:    10px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(16,22,32,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      height: 64px;
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 48px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .nav-logo img { width: 28px; height: 28px; border-radius: 6px; }
+    .nav-links { display: flex; gap: 24px; align-items: center; }
+    .nav-links a {
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.15s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .btn-nav-dl {
+      background: var(--blue);
+      color: #fff !important;
+      padding: 7px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 13px;
+      transition: opacity 0.15s;
+      text-decoration: none;
+    }
+    .btn-nav-dl:hover { opacity: 0.85; }
+
+    /* ── PAGE ── */
+    .cl-page {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 64px 24px 100px;
+    }
+
+    .cl-header {
+      margin-bottom: 52px;
+    }
+    .cl-header h1 {
+      font-size: clamp(28px, 5vw, 40px);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+    .cl-header p {
+      color: var(--text-dim);
+      font-size: 15px;
+    }
+
+    /* ── RELEASE CARD ── */
+    .cl-release {
+      display: flex;
+      gap: 32px;
+      margin-bottom: 56px;
+    }
+    .cl-aside {
+      flex-shrink: 0;
+      width: 110px;
+      padding-top: 3px;
+    }
+    .cl-version {
+      display: inline-block;
+      background: rgba(88,166,255,0.1);
+      border: 1px solid rgba(88,166,255,0.22);
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 99px;
+      margin-bottom: 6px;
+      white-space: nowrap;
+    }
+    .cl-date {
+      font-size: 11px;
+      color: var(--text-dim);
+      white-space: nowrap;
+    }
+    .cl-body {
+      flex: 1;
+      border-left: 2px solid var(--border);
+      padding-left: 28px;
+      min-width: 0;
+    }
+    .cl-release:first-child .cl-body { border-color: var(--blue); }
+
+    /* Markdown rendered content */
+    .cl-md h1, .cl-md h2 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+      margin: 20px 0 8px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--border);
+    }
+    .cl-md h1:first-child, .cl-md h2:first-child { margin-top: 0; }
+    .cl-md h3 {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: var(--blue);
+      margin: 16px 0 6px;
+    }
+    .cl-md h3:first-child { margin-top: 0; }
+    .cl-md p {
+      font-size: 14px;
+      color: var(--text-dim);
+      margin-bottom: 8px;
+      line-height: 1.6;
+    }
+    .cl-md ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .cl-md ul li {
+      font-size: 14px;
+      color: var(--text-dim);
+      padding-left: 16px;
+      position: relative;
+      line-height: 1.5;
+    }
+    .cl-md ul li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--blue);
+      font-size: 12px;
+      top: 1px;
+    }
+    .cl-md strong { color: var(--text); font-weight: 600; }
+    .cl-md em { font-style: italic; color: var(--text-dim); }
+    .cl-md code {
+      background: rgba(255,255,255,0.06);
+      border-radius: 4px;
+      padding: 1px 5px;
+      font-size: 12px;
+      font-family: 'Cascadia Code', 'JetBrains Mono', Consolas, monospace;
+    }
+    .cl-md a { color: var(--blue); text-decoration: none; }
+    .cl-md a:hover { text-decoration: underline; }
+    .cl-md hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 16px 0;
+    }
+
+    /* ── STATES ── */
+    .cl-loading {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text-dim);
+      font-size: 14px;
+      padding: 40px 0;
+    }
+    .cl-spinner {
+      width: 18px; height: 18px;
+      border: 2px solid var(--border);
+      border-top-color: var(--blue);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      flex-shrink: 0;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .cl-error {
+      color: var(--text-dim);
+      font-size: 14px;
+      padding: 40px 0;
+    }
+    .cl-empty {
+      color: var(--text-dim);
+      font-size: 14px;
+      padding: 40px 0;
+    }
+
+    /* ── DIVIDER between releases ── */
+    .cl-release + .cl-release .cl-body {
+      border-color: var(--border);
+    }
+
+    @media (max-width: 580px) {
+      .cl-release { flex-direction: column; gap: 12px; }
+      .cl-aside { width: auto; display: flex; align-items: center; gap: 12px; padding-top: 0; }
+      .cl-body { border-left: none; border-top: 2px solid var(--border); padding-left: 0; padding-top: 16px; }
+      .cl-release:first-child .cl-body { border-color: var(--blue); }
+      .nav-inner { padding: 0 16px; }
+      .nav-links { gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="/">
+      <img src="icons/icon-192.png" alt="Bakkboard logo" style="width:28px;height:28px;border-radius:6px;vertical-align:middle;margin-right:8px;" />
+      <span>Bakkboard</span>
+    </a>
+    <div class="nav-links">
+      <a href="/#how-it-works" style="color:var(--text-dim);text-decoration:none;font-size:14px;">How it works</a>
+      <a href="/blog/" style="color:var(--text-dim);text-decoration:none;font-size:14px;">Blog</a>
+      <a href="/changelog" style="color:var(--text);text-decoration:none;font-size:14px;font-weight:600;">Changelog</a>
+      <a class="btn-nav-dl" href="https://github.com/lorislorenzetti/bakkboard/releases/latest/download/Bakkboard.exe">Download</a>
+    </div>
+  </div>
+</nav>
+
+<div class="cl-page">
+  <div class="cl-header">
+    <h1>Changelog</h1>
+    <p>All releases, newest first. Pulled live from GitHub.</p>
+  </div>
+  <div id="cl-list">
+    <div class="cl-loading">
+      <div class="cl-spinner"></div>
+      Loading releases…
+    </div>
+  </div>
+</div>
+
+<script>
+  marked.setOptions({ gfm: true, breaks: true });
+
+  function formatDate(iso) {
+    const d = new Date(iso);
+    return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+  }
+
+  async function loadReleases() {
+    const container = document.getElementById('cl-list');
+    try {
+      const res = await fetch('https://api.github.com/repos/lorislorenzetti/bakkboard/releases', {
+        headers: { 'Accept': 'application/vnd.github+json' }
+      });
+      if (!res.ok) throw new Error('GitHub API error ' + res.status);
+      const releases = await res.json();
+      if (!releases.length) {
+        container.innerHTML = '<p class="cl-empty">No releases found.</p>';
+        return;
+      }
+      container.innerHTML = '';
+      releases.forEach((r, i) => {
+        const version = r.tag_name.startsWith('v') ? r.tag_name : 'v' + r.tag_name;
+        const date    = formatDate(r.published_at);
+        const body    = r.body ? marked.parse(r.body) : '<p style="color:var(--text-dim);font-style:italic">No release notes.</p>';
+        const el = document.createElement('div');
+        el.className = 'cl-release';
+        el.innerHTML = `
+          <div class="cl-aside">
+            <div class="cl-version">${version}</div>
+            <div class="cl-date">${date}</div>
+          </div>
+          <div class="cl-body">
+            <div class="cl-md">${body}</div>
+          </div>
+        `;
+        container.appendChild(el);
+      });
+    } catch (e) {
+      container.innerHTML = `<p class="cl-error">Could not load releases. <a href="https://github.com/lorislorenzetti/bakkboard/releases" style="color:var(--blue)">View on GitHub →</a></p>`;
+    }
+  }
+
+  loadReleases();
+</script>
+</body>
+</html>
