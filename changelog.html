@@ -82,6 +82,43 @@
     }
     .btn-nav-dl:hover { opacity: 0.85; }
 
+    /* ── HAMBURGER ── */
+    .nav-hamburger {
+      display: none; flex-direction: column; justify-content: center; gap: 5px;
+      width: 36px; height: 36px; background: none; border: none;
+      cursor: pointer; padding: 4px; border-radius: 6px;
+    }
+    .nav-hamburger span {
+      display: block; width: 22px; height: 2px;
+      background: var(--text); border-radius: 2px;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-mobile-menu {
+      display: none; position: fixed; top: 64px; left: 0; right: 0;
+      background: rgba(16,22,32,0.98); backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      flex-direction: column; padding: 16px 24px 24px; gap: 4px; z-index: 99;
+    }
+    .nav-mobile-menu.open { display: flex; }
+    .nav-mobile-menu a {
+      color: var(--text-dim); text-decoration: none; font-size: 16px;
+      padding: 12px 0; border-bottom: 1px solid var(--border); transition: color 0.15s;
+    }
+    .nav-mobile-menu a:last-child { border-bottom: none; }
+    .nav-mobile-menu a:hover { color: var(--text); }
+    .nav-mobile-menu .btn-nav-dl {
+      color: #fff !important; margin-top: 8px;
+      text-align: center; padding: 12px 16px; font-size: 15px;
+    }
+    @media (max-width: 640px) {
+      .nav-inner { padding: 0 16px; }
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+    }
+
     /* ── PAGE ── */
     .cl-page {
       max-width: 780px;
@@ -270,8 +307,31 @@
       <a href="/changelog" style="color:var(--text);text-decoration:none;font-size:14px;font-weight:600;">Changelog</a>
       <a class="btn-nav-dl" href="https://github.com/lorislorenzetti/bakkboard/releases/latest/download/Bakkboard.exe">Download</a>
     </div>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+<div class="nav-mobile-menu" id="nav-mobile-menu">
+  <a href="/#how-it-works">How it works</a>
+  <a href="/blog/">Blog</a>
+  <a href="/changelog">Changelog</a>
+  <a class="btn-nav-dl" href="https://github.com/lorislorenzetti/bakkboard/releases/latest/download/Bakkboard.exe">Download</a>
+</div>
+<script>
+  const _hbBtn = document.getElementById('nav-hamburger');
+  const _hbMenu = document.getElementById('nav-mobile-menu');
+  _hbBtn.addEventListener('click', () => {
+    const open = _hbMenu.classList.toggle('open');
+    _hbBtn.classList.toggle('open', open);
+  });
+  _hbMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      _hbMenu.classList.remove('open');
+      _hbBtn.classList.remove('open');
+    });
+  });
+</script>
 
 <div class="cl-page">
   <div class="cl-header">

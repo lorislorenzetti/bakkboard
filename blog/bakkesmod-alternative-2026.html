@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -30,8 +30,31 @@
       <a href="/changelog" style="color:var(--text-dim);text-decoration:none;font-size:14px;">Changelog</a>
       <a class="btn-nav-dl" href="https://github.com/lorislorenzetti/bakkboard/releases/latest/download/Bakkboard.exe">Download</a>
     </div>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+<div class="nav-mobile-menu" id="nav-mobile-menu">
+  <a href="/#how-it-works">How it works</a>
+  <a href="/blog/">Blog</a>
+  <a href="/changelog">Changelog</a>
+  <a class="btn-nav-dl" href="https://github.com/lorislorenzetti/bakkboard/releases/latest/download/Bakkboard.exe">Download</a>
+</div>
+<script>
+  const _hbBtn = document.getElementById('nav-hamburger');
+  const _hbMenu = document.getElementById('nav-mobile-menu');
+  _hbBtn.addEventListener('click', () => {
+    const open = _hbMenu.classList.toggle('open');
+    _hbBtn.classList.toggle('open', open);
+  });
+  _hbMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      _hbMenu.classList.remove('open');
+      _hbBtn.classList.remove('open');
+    });
+  });
+</script>
 
 <div class="article-wrap">
   <div class="article-meta">
