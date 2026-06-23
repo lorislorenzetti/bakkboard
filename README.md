@@ -112,6 +112,20 @@ Bakkboard detects your matches automatically.
 
 ---
 
+## How Bakkboard Works
+
+Bakkboard never touches the game process. Easy Anti-Cheat never sees it — because there is nothing to see.
+
+| Feature | How it works |
+|---|---|
+| **Stats & match data** | Read from Rocket League's local Stats API — the same data the game exposes to the operating system. No process injection, no memory reading. |
+| **Cosmetics swap** | UPK files are patched on disk before the game launches. The game loads them through its normal file loading — exactly like any other game asset. Easy Anti-Cheat does not scan file content at rest. |
+| **Overlays** | Separate windows rendered by the OS as normal applications. They sit on top of the screen just like a browser or Discord — completely outside the game process. |
+| **Workshop maps** | Map files are copied to the correct game directory before launch, the same way the game expects them. No runtime modification of any kind. |
+| **Custom sounds** | Audio files are played by the app's own audio engine in response to events from the Stats API. Nothing is injected — sounds play in a separate process, like any media player running alongside the game. |
+
+---
+
 ## What Bakkboard Is Not
 
 Bakkboard does **not**:
