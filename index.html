@@ -239,6 +239,54 @@
       font-size: 12px;
       color: var(--text-dim);
     }
+    .vt-card {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      margin-top: 20px;
+      background: rgba(63,185,80,.07);
+      border: 1px solid rgba(63,185,80,.22);
+      border-radius: 10px;
+      padding: 11px 20px;
+      font-size: 13px;
+      color: var(--text-dim);
+      text-decoration: none;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .vt-card:hover { border-color: rgba(63,185,80,.5); background: rgba(63,185,80,.11); }
+    .vt-shield {
+      font-size: 22px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .vt-score {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--green);
+      line-height: 1.1;
+    }
+    .vt-detail {
+      font-size: 11px;
+      color: var(--text-dim);
+      margin-top: 1px;
+    }
+    .vt-sep {
+      width: 1px;
+      height: 32px;
+      background: rgba(63,185,80,.2);
+      flex-shrink: 0;
+    }
+    .vt-label {
+      font-size: 12px;
+      line-height: 1.5;
+    }
+    .vt-link-arrow {
+      margin-left: 4px;
+      font-size: 14px;
+      color: #3fb950;
+      opacity: 0.8;
+    }
+    .vt-card:hover .vt-link-arrow { opacity: 1; }
     .dl-badge {
       display: inline-flex;
       align-items: center;
@@ -542,6 +590,7 @@
     .hero p        { animation: fadeUp 0.6s ease both; animation-delay: 0.18s; }
     .hero-cta      { animation: fadeUp 0.6s ease both; animation-delay: 0.30s; }
     .hero-note     { animation: fadeUp 0.6s ease both; animation-delay: 0.40s; }
+    .hero-vt       { animation: fadeUp 0.6s ease both; animation-delay: 0.50s; }
 
     /* ── SCROLL REVEAL ── */
     .reveal {
@@ -647,6 +696,21 @@
       View on GitHub
     </a>
   </div>
+  <div class="hero-vt" style="display:flex; justify-content:center; margin-top:4px;">
+    <a class="vt-card" href="https://www.virustotal.com/gui/file/7245ccc0c4fbf962c0ae796d588cb407e2c76d2323c30d56d85663e23fd9c914" target="_blank" rel="noopener">
+      <svg class="vt-shield" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#3fb950" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="7 12 10.5 15.5 17 9"/></svg>
+      <div>
+        <div style="font-size:11px; font-weight:700; letter-spacing:.08em; color:#7a8899; text-transform:uppercase; margin-bottom:2px;">VirusTotal</div>
+        <div class="vt-score">64 / 66 clean</div>
+      </div>
+      <div class="vt-sep"></div>
+      <div class="vt-label">
+        2 flags are false positives caused by<br>
+        PyInstaller's bundling — view full report
+      </div>
+      <span class="vt-link-arrow">↗</span>
+    </a>
+  </div>
 </div>
 
 <!-- LIVE MATCH -->
@@ -719,10 +783,10 @@
       <div class="spotlight-tag"><span class="spotlight-tag-icon">🖥️</span>Overlays</div>
       <div class="spotlight-title">Your stats,<br>always in view.</div>
       <ul class="spotlight-bullets">
-        <li><strong>Stats Bar</strong> — W/L, win rate, streak and MMR delta. Switches playlist automatically</li>
-        <li><strong>Rank Badge</strong> — current rank, division and MMR. Switches playlist automatically</li>
+        <li><strong>Stats Bar</strong> — W/L, win rate, streak and MMR delta. Syncs with your dashboard selection</li>
+        <li><strong>Rank Badge</strong> — current rank, division and MMR. Syncs with your dashboard selection</li>
         <li><strong>Match Scoreboard</strong> — both teams, scores and rank icons during active matches</li>
-        <li><strong>Magic Rank</strong> — rank icons overlaid on the in-game scoreboard. Requires one-time calibration</li>
+        <li><strong>Magic Rank</strong> — rank icons overlaid on the in-game scoreboard, pre-configured for all 16:9 resolutions</li>
         <li>All overlays are positionable, scalable and opacity-adjustable</li>
         <li>Optional auto-hide when Rocket League loses focus</li>
       </ul>
@@ -743,6 +807,7 @@
       <div class="spotlight-title">Custom decals,<br>wheels and boosts.</div>
       <ul class="spotlight-bullets">
         <li>Apply custom decals, wheels and boosts via UPK file patching</li>
+        <li>Choose which item to use as the replace slot — any cosmetic you own</li>
         <li>Select car body first — each body keeps its own decal slot</li>
         <li>Originals backed up and restored in one click</li>
         <li>No runtime injection — files are swapped at rest, not during gameplay</li>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to Add Custom Sounds to Rocket League — Goals, Saves, Demos &amp; Crossbars | Bakkboard</title>
+  <meta name="description" content="Play custom audio clips on goals, saves, demolitions and crossbars in Rocket League. Drag and drop any audio file, trim it, set the volume and choose who triggers it." />
+  <link rel="canonical" href="https://bakkboard.gg/blog/rocket-league-custom-sounds-2026.html" />
+  <link rel="icon" type="image/x-icon" href="../icons/favicon.ico" />
+  <link rel="stylesheet" href="blog.css" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-P2RBXCP2QT"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-P2RBXCP2QT');
+  </script>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="/">
+      <img src="../icons/icon-192.png" alt="Bakkboard logo" style="width:28px;height:28px;border-radius:6px;vertical-align:middle;margin-right:8px;" />
+      <span>Bakkboard</span>
+    </a>
+    <div class="nav-links">
+      <a href="/#how-it-works" style="color:var(--text-dim);text-decoration:none;font-size:14px;">How it works</a>
+      <a href="/blog/" style="color:var(--text-dim);text-decoration:none;font-size:14px;">Blog</a>
+      <a href="/changelog" style="color:var(--text-dim);text-decoration:none;font-size:14px;">Changelog</a>
+      <a class="btn-nav-dl" href="https://github.com/lorislorenzetti/bakkboard/releases/latest/download/Bakkboard.exe">Download</a>
+    </div>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-mobile-menu" id="nav-mobile-menu">
+  <a href="/#how-it-works">How it works</a>
+  <a href="/blog/">Blog</a>
+  <a href="/changelog">Changelog</a>
+  <a class="btn-nav-dl" href="https://github.com/lorislorenzetti/bakkboard/releases/latest/download/Bakkboard.exe">Download</a>
+</div>
+<script>
+  const _hbBtn = document.getElementById('nav-hamburger');
+  const _hbMenu = document.getElementById('nav-mobile-menu');
+  _hbBtn.addEventListener('click', () => {
+    const open = _hbMenu.classList.toggle('open');
+    _hbBtn.classList.toggle('open', open);
+  });
+  _hbMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      _hbMenu.classList.remove('open');
+      _hbBtn.classList.remove('open');
+    });
+  });
+</script>
+
+<div class="article-wrap">
+  <div class="article-meta">
+    <span class="article-tag">Sounds</span>
+    <span>June 2026</span>
+    <span>·</span>
+    <span>5 min read</span>
+  </div>
+
+  <h1>How to Add Custom Sounds to Rocket League — Goals, Saves, Demos &amp; Crossbars</h1>
+  <p class="lead">Bakkboard lets you assign any audio file to in-game events — goals, saves, demolitions and crossbars. Every time the event fires, your sound plays. No injection, no mods, no risk.</p>
+
+  <img src="../screenshots/Bakkboard_7.gif" alt="Bakkboard custom sounds panel" class="article-img" />
+  <p class="img-caption">Setting up custom sounds for in-game events in Bakkboard's Sounds panel.</p>
+
+  <h2>What custom sounds do</h2>
+  <p>Each time a supported event happens during a match, Bakkboard intercepts it from Rocket League's Stats API and plays the audio file you assigned to that category. The game audio is unchanged — Bakkboard's sounds play on top, through your speakers or headset, from a completely separate audio process.</p>
+  <p>Supported event categories:</p>
+  <ul>
+    <li><strong>Goal</strong> — fires when any qualifying goal is scored</li>
+    <li><strong>Save</strong> — fires on saves and epic saves</li>
+    <li><strong>Demolition</strong> — fires when a demolition occurs</li>
+    <li><strong>Crossbar</strong> — fires when the ball hits the post or crossbar</li>
+  </ul>
+
+  <h2>Adding your audio files</h2>
+  <p>Open Bakkboard and go to the <strong>Sounds</strong> tab. Each event category has its own drag-and-drop zone. Drag any audio file (MP3, WAV, OGG, M4A) into the zone for the category you want, or click the zone to open a file picker. The file is copied into Bakkboard's sounds folder and is immediately available.</p>
+  <p>You can add multiple files per category. Bakkboard will pick one at random each time the event fires — or play them in the order you set, if you prefer sequential mode.</p>
+
+  <h2>Trim, fade and volume</h2>
+  <p>Each file has an individual volume slider and a built-in trim editor. Open the trim editor by clicking the scissors icon next to any file. Drag the start and end handles on the waveform to cut the clip to exactly the length you want, with optional fade in and fade out. A global volume slider applies on top of all individual levels.</p>
+
+  <h2>Who triggers the sound</h2>
+  <p>For each category you can set the <strong>scope</strong>:</p>
+  <ul>
+    <li><strong>Me</strong> — only when you personally score, save, demolish or hit the post</li>
+    <li><strong>My team</strong> — when anyone on your team triggers the event</li>
+    <li><strong>Everyone</strong> — every event in the match, regardless of team</li>
+  </ul>
+  <p>Setting Demolition to "Me" means your sound only plays when you demolish someone — not when you get demolished.</p>
+
+  <h2>No injection, no ban risk</h2>
+  <p>The sounds are played entirely by Bakkboard's own audio engine. Rocket League's process is never touched. Easy Anti-Cheat does not see Bakkboard because there is nothing to intercept — the app reads match events from the Stats API (a standard OS-level interface the game exposes to the operating system) and plays audio in a separate process, the same way any music player running alongside a game would.</p>
+
+  <div class="cta-box">
+    <h3>Add custom sounds to Rocket League with Bakkboard</h3>
+    <p>Free · No injection · Works with Steam and Epic</p>
+    <a class="btn-dl" href="https://github.com/lorislorenzetti/bakkboard/releases/latest/download/Bakkboard.exe">↓ Download Bakkboard.exe</a>
+  </div>
+
+  <hr />
+  <p><a href="/blog/">← Back to Blog</a></p>
+</div>
+
+<footer>
+  <a href="/">Bakkboard</a> &nbsp;·&nbsp;
+  <a href="/blog/">Blog</a> &nbsp;·&nbsp;
+  Not affiliated with Psyonix or Epic Games.
+</footer>
+
+</body>
+</html>

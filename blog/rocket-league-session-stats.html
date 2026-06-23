@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to Track Your Rocket League Session Stats — W/L, MMR Delta and Streak per Playlist | Bakkboard</title>
+  <meta name="description" content="Track your Rocket League session stats in real time: wins, losses, win rate, streak, MMR delta and detailed performance stats — filtered by playlist and time period." />
+  <link rel="canonical" href="https://bakkboard.gg/blog/rocket-league-session-stats.html" />
+  <link rel="icon" type="image/x-icon" href="../icons/favicon.ico" />
+  <link rel="stylesheet" href="blog.css" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-P2RBXCP2QT"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-P2RBXCP2QT');
+  </script>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="/">
+      <img src="../icons/icon-192.png" alt="Bakkboard logo" style="width:28px;height:28px;border-radius:6px;vertical-align:middle;margin-right:8px;" />
+      <span>Bakkboard</span>
+    </a>
+    <div class="nav-links">
+      <a href="/#how-it-works" style="color:var(--text-dim);text-decoration:none;font-size:14px;">How it works</a>
+      <a href="/blog/" style="color:var(--text-dim);text-decoration:none;font-size:14px;">Blog</a>
+      <a href="/changelog" style="color:var(--text-dim);text-decoration:none;font-size:14px;">Changelog</a>
+      <a class="btn-nav-dl" href="https://github.com/lorislorenzetti/bakkboard/releases/latest/download/Bakkboard.exe">Download</a>
+    </div>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-mobile-menu" id="nav-mobile-menu">
+  <a href="/#how-it-works">How it works</a>
+  <a href="/blog/">Blog</a>
+  <a href="/changelog">Changelog</a>
+  <a class="btn-nav-dl" href="https://github.com/lorislorenzetti/bakkboard/releases/latest/download/Bakkboard.exe">Download</a>
+</div>
+<script>
+  const _hbBtn = document.getElementById('nav-hamburger');
+  const _hbMenu = document.getElementById('nav-mobile-menu');
+  _hbBtn.addEventListener('click', () => {
+    const open = _hbMenu.classList.toggle('open');
+    _hbBtn.classList.toggle('open', open);
+  });
+  _hbMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      _hbMenu.classList.remove('open');
+      _hbBtn.classList.remove('open');
+    });
+  });
+</script>
+
+<div class="article-wrap">
+  <div class="article-meta">
+    <span class="article-tag">Stats &amp; MMR</span>
+    <span>June 2026</span>
+    <span>·</span>
+    <span>5 min read</span>
+  </div>
+
+  <h1>How to Track Your Rocket League Session Stats — W/L, MMR Delta and Streak per Playlist</h1>
+  <p class="lead">Bakkboard tracks your Rocket League sessions in real time — wins, losses, win rate, streak and MMR delta — filtered by playlist and time period. Everything is stored locally, no account required.</p>
+
+  <img src="../screenshots/Bakkboard_3.gif" alt="Bakkboard session stats panel" class="article-img" />
+  <p class="img-caption">Session stats panel in Bakkboard: W/L record, streak, MMR delta and detailed performance stats.</p>
+
+  <h2>What session stats track</h2>
+  <p>Session stats in Bakkboard give you a live view of your current ranked performance. The panel updates after every recorded match and shows:</p>
+  <ul>
+    <li><strong>W/L record</strong> — wins and losses for the selected period and playlist</li>
+    <li><strong>Win rate</strong> — percentage, updated match by match</li>
+    <li><strong>Current streak</strong> — how many wins or losses in a row</li>
+    <li><strong>MMR delta</strong> — how many MMR points you have gained or lost in the selected period</li>
+    <li><strong>Current rank and division</strong> — pulled from Tracker.gg at the end of each match</li>
+    <li><strong>W/L sparkline</strong> — compact visual history of the last matches</li>
+  </ul>
+
+  <h2>Filtering by playlist and period</h2>
+  <p>All session stats are filterable. You can narrow the view to a specific playlist — 1v1, 2v2, 3v3 Ranked — so you are not mixing formats that play very differently. You can also filter by time period: today, this week, this month, last 7 days, last 30 days, last 90 days, or a custom date range.</p>
+  <p>Switching to "Today" gives you a clean view of the current session. Switching to "This month" shows you the longer trend without clutter from older data.</p>
+
+  <h2>Detailed performance stats</h2>
+  <p>Below the main W/L summary, Bakkboard shows detailed stats for the selected period:</p>
+  <ul>
+    <li>Goals, assists, saves, shots per match (totals and averages)</li>
+    <li>Touches and hard hits per match</li>
+    <li>Crossbar hits and demolitions</li>
+    <li>Average goal speed</li>
+  </ul>
+  <p>You can toggle between totals and per-match averages to compare sessions of different lengths. A side-by-side comparison with any tracked friend is also available directly from this view.</p>
+
+  <h2>Pause tracking</h2>
+  <p>If you are about to play a set of matches you do not want included in your stats — unranked practice, playing on a friend's account, testing — you can pause tracking from the session panel. Bakkboard will record matches as usual internally but exclude them from your stats and match history until you unpause.</p>
+
+  <h2>Local storage, no account needed</h2>
+  <p>All session data is stored locally under <code>%LocalAppData%\Bakkboard</code>. Nothing is sent to any external server. You do not need a Psyonix account, a Tracker.gg account or any other login. The data is yours and stays on your machine.</p>
+  <p>Rank lookups (for the rank badge and MMR history) are fetched from Tracker.gg on your behalf — a read-only request that does not require authentication and does not link to any account.</p>
+
+  <h2>Multi-account support</h2>
+  <p>If you play on multiple accounts, Bakkboard tracks each one independently. You can switch between accounts from the top bar at any time to view stats, session history and ranks per account. Accounts with different usernames over time can be merged to keep history together.</p>
+
+  <div class="cta-box">
+    <h3>Track your Rocket League sessions with Bakkboard</h3>
+    <p>Free · Local data · No account required · Works with Steam and Epic</p>
+    <a class="btn-dl" href="https://github.com/lorislorenzetti/bakkboard/releases/latest/download/Bakkboard.exe">↓ Download Bakkboard.exe</a>
+  </div>
+
+  <hr />
+  <p><a href="/blog/">← Back to Blog</a></p>
+</div>
+
+<footer>
+  <a href="/">Bakkboard</a> &nbsp;·&nbsp;
+  <a href="/blog/">Blog</a> &nbsp;·&nbsp;
+  Not affiliated with Psyonix or Epic Games.
+</footer>
+
+</body>
+</html>

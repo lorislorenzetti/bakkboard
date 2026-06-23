@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to Get Alpha Boost in Rocket League in 2026 | Bakkboard</title>
+  <meta name="description" content="Trading is gone. Alpha Boost is unobtainable — unless you use Bakkboard's cosmetics swap to apply it locally, with no ban risk and no money spent." />
+  <link rel="canonical" href="https://bakkboard.gg/blog/how-to-get-alpha-boost-rocket-league.html" />
+  <link rel="icon" type="image/x-icon" href="../icons/favicon.ico" />
+  <link rel="stylesheet" href="blog.css" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-P2RBXCP2QT"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-P2RBXCP2QT');
+  </script>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="/">
+      <img src="../icons/icon-192.png" alt="Bakkboard logo" style="width:28px;height:28px;border-radius:6px;vertical-align:middle;margin-right:8px;" />
+      <span>Bakkboard</span>
+    </a>
+    <div class="nav-links">
+      <a href="/#how-it-works" style="color:var(--text-dim);text-decoration:none;font-size:14px;">How it works</a>
+      <a href="/blog/" style="color:var(--text-dim);text-decoration:none;font-size:14px;">Blog</a>
+      <a href="/changelog" style="color:var(--text-dim);text-decoration:none;font-size:14px;">Changelog</a>
+      <a class="btn-nav-dl" href="https://github.com/lorislorenzetti/bakkboard/releases/latest/download/Bakkboard.exe">Download</a>
+    </div>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-mobile-menu" id="nav-mobile-menu">
+  <a href="/#how-it-works">How it works</a>
+  <a href="/blog/">Blog</a>
+  <a href="/changelog">Changelog</a>
+  <a class="btn-nav-dl" href="https://github.com/lorislorenzetti/bakkboard/releases/latest/download/Bakkboard.exe">Download</a>
+</div>
+<script>
+  const _hbBtn = document.getElementById('nav-hamburger');
+  const _hbMenu = document.getElementById('nav-mobile-menu');
+  _hbBtn.addEventListener('click', () => {
+    const open = _hbMenu.classList.toggle('open');
+    _hbBtn.classList.toggle('open', open);
+  });
+  _hbMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      _hbMenu.classList.remove('open');
+      _hbBtn.classList.remove('open');
+    });
+  });
+</script>
+
+<div class="article-wrap">
+  <div class="article-meta">
+    <span class="article-tag">Cosmetics</span>
+    <span>June 2026</span>
+    <span>·</span>
+    <span>5 min read</span>
+  </div>
+
+  <h1>How to Get Alpha Boost in Rocket League in 2026</h1>
+  <p class="lead">Alpha Boost is the most iconic item in Rocket League history — and it has been unobtainable for years. BakkesMod made it possible to see it locally. Now BakkesMod is gone. Bakkboard is the replacement.</p>
+
+  <img src="../screenshots/Bakkboard_5.gif" alt="Bakkboard cosmetics swap — applying Alpha Boost" class="article-img" />
+  <p class="img-caption">Applying a custom boost via Bakkboard's Cosmetics Swap panel.</p>
+
+  <h2>BakkesMod is gone — and so is the easiest workaround</h2>
+  <p>Alpha Boost — the golden boost trail awarded to Rocket League alpha testers in 2014 — has always been one of the rarest and most recognisable items in the game. For years, BakkesMod let players apply it locally as a visual override, without touching their actual inventory. It was one of the most popular uses of the plugin.</p>
+  <p>When Epic Games enabled Easy Anti-Cheat for Rocket League, BakkesMod stopped working. The DLL injection it relied on was exactly what the anti-cheat was designed to block. That workaround is gone for good.</p>
+  <p>Bakkboard does the same thing — applying Alpha Boost locally so you see it on your car — without any injection. A completely different approach that works in 2026.</p>
+
+  <h2>What Bakkboard's cosmetics swap does</h2>
+  <p>Bakkboard patches the UPK asset file for your chosen boost slot on disk — before the game launches. When Rocket League loads, it reads the patched file through its normal asset loading pipeline, just as it would read any other game file. The result: you see the boost you applied on your car.</p>
+  <p>This is a <strong>local-only visual change</strong>. It only affects what you see on your own screen. Other players online see whatever you have actually equipped in the garage — your real inventory is unchanged. You are not adding items to your account. You are not modifying game memory at runtime.</p>
+
+  <h2>No ban risk</h2>
+  <p>Easy Anti-Cheat scans for process injection and memory manipulation — techniques that modify the game while it is running. Bakkboard does neither. The file is patched at rest, the game reads it normally, and the anti-cheat never sees anything unusual. This is the same reason Bakkboard can swap decals and wheels with zero ban risk: it works entirely outside the game process.</p>
+
+  <h2>How to apply Alpha Boost — step by step</h2>
+  <ol>
+    <li>Download and open <strong>Bakkboard</strong>.</li>
+    <li>Go to the <strong>Cosmetics</strong> tab and select the <strong>Boost</strong> section.</li>
+    <li>Choose a boost from your inventory as the <strong>replace slot</strong> — this is the item you will equip in the Rocket League garage after the swap.</li>
+    <li>Find <strong>Alpha Boost</strong> (or any other boost) in the list and click <strong>Apply</strong>.</li>
+    <li><strong>Restart Rocket League</strong>, then equip the replace slot item in the garage.</li>
+    <li>Enter a match or free play — the boost you applied will appear on your car.</li>
+  </ol>
+  <p>To revert, click <strong>Remove</strong> in the Cosmetics tab and restart the game. Bakkboard keeps a backup of the original file and restores it instantly.</p>
+
+  <h2>Not just Alpha Boost</h2>
+  <p>The same system works for <strong>decals</strong> and <strong>wheels</strong>. Apply Dissolver on any car body, Zomba or Cristiano wheels, or any other cosmetic in the game catalog — regardless of whether you own it. All local, all reversible, all free.</p>
+
+  <div class="cta-box">
+    <h3>Apply Alpha Boost and any cosmetic with Bakkboard</h3>
+    <p>Free · No injection · No ban risk · Works with Steam and Epic</p>
+    <a class="btn-dl" href="https://github.com/lorislorenzetti/bakkboard/releases/latest/download/Bakkboard.exe">↓ Download Bakkboard.exe</a>
+  </div>
+
+  <hr />
+  <p><a href="/blog/">← Back to Blog</a></p>
+</div>
+
+<footer>
+  <a href="/">Bakkboard</a> &nbsp;·&nbsp;
+  <a href="/blog/">Blog</a> &nbsp;·&nbsp;
+  Not affiliated with Psyonix or Epic Games.
+</footer>
+
+</body>
+</html>

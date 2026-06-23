@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to Improve Your Win Rate in Rocket League — Stats, Patterns and What Actually Matters | Bakkboard</title>
+  <meta name="description" content="Win rate in Rocket League is not random. Here is how to read your own stats, identify real patterns and use data to improve your results." />
+  <link rel="canonical" href="https://bakkboard.gg/blog/rocket-league-win-rate-improve.html" />
+  <link rel="icon" type="image/x-icon" href="../icons/favicon.ico" />
+  <link rel="stylesheet" href="blog.css" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-P2RBXCP2QT"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-P2RBXCP2QT');
+  </script>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="/">
+      <img src="../icons/icon-192.png" alt="Bakkboard logo" style="width:28px;height:28px;border-radius:6px;vertical-align:middle;margin-right:8px;" />
+      <span>Bakkboard</span>
+    </a>
+    <div class="nav-links">
+      <a href="/#how-it-works" style="color:var(--text-dim);text-decoration:none;font-size:14px;">How it works</a>
+      <a href="/blog/" style="color:var(--text-dim);text-decoration:none;font-size:14px;">Blog</a>
+      <a href="/changelog" style="color:var(--text-dim);text-decoration:none;font-size:14px;">Changelog</a>
+      <a class="btn-nav-dl" href="https://github.com/lorislorenzetti/bakkboard/releases/latest/download/Bakkboard.exe">Download</a>
+    </div>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-mobile-menu" id="nav-mobile-menu">
+  <a href="/#how-it-works">How it works</a>
+  <a href="/blog/">Blog</a>
+  <a href="/changelog">Changelog</a>
+  <a class="btn-nav-dl" href="https://github.com/lorislorenzetti/bakkboard/releases/latest/download/Bakkboard.exe">Download</a>
+</div>
+<script>
+  const _hbBtn = document.getElementById('nav-hamburger');
+  const _hbMenu = document.getElementById('nav-mobile-menu');
+  _hbBtn.addEventListener('click', () => {
+    const open = _hbMenu.classList.toggle('open');
+    _hbBtn.classList.toggle('open', open);
+  });
+  _hbMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      _hbMenu.classList.remove('open');
+      _hbBtn.classList.remove('open');
+    });
+  });
+</script>
+
+<div class="article-wrap">
+  <div class="article-meta">
+    <span class="article-tag">Analytics</span>
+    <span>June 2026</span>
+    <span>·</span>
+    <span>6 min read</span>
+  </div>
+
+  <h1>How to Improve Your Win Rate in Rocket League — Stats, Patterns and What Actually Matters</h1>
+  <p class="lead">Most Rocket League players focus on mechanics. The players who improve fastest are the ones who also pay attention to their own data — when they play well, when they tilt, and what the numbers actually say about their game.</p>
+
+  <img src="../screenshots/Bakkboard_3.gif" alt="Bakkboard analytics — win rate charts and play-style trends" class="article-img" />
+  <p class="img-caption">Win rate trends, play-style analysis and shot tracking in Bakkboard's Analytics panel.</p>
+
+  <h2>Win rate is a lagging indicator</h2>
+  <p>Your win rate on any given day tells you almost nothing about how well you are playing. Matchmaking variance, teammate quality and the small sample sizes of daily sessions mean that short-term win rate fluctuates heavily regardless of your actual skill level. Looking at a single day or even a single week is mostly noise.</p>
+  <p>What matters is the <strong>trend over several weeks</strong>. If your rolling win rate is consistently above 50% over 30+ matches, you are above your current MMR. If it is consistently below, you are being outperformed. That is the number worth watching.</p>
+
+  <h2>The patterns that actually predict results</h2>
+
+  <h3>Time of day</h3>
+  <p>Most players have a time of day where they perform significantly better or worse. Late-night sessions after a long day tend to produce worse results — slower reactions, more tilting, less patience for slow-paced plays. Bakkboard's win rate by hour of day chart makes this visible across your entire match history. If your win rate drops after 11pm, that is real data, not an excuse.</p>
+
+  <h3>Day of the week</h3>
+  <p>Weekend lobbies in Rocket League tend to have different matchmaking characteristics than weekday lobbies — different player pools, different average skill distributions. Your win rate by day of week might show you playing significantly better on Tuesday evenings than on Saturday afternoons. Knowing this lets you schedule serious ranked sessions for when you actually perform.</p>
+
+  <h3>Shot quality over volume</h3>
+  <p>A high shot count is not a good sign on its own. Players who take many low-percentage shots tend to have lower win rates than players who take fewer, higher-quality shots. Tracking your shots per match alongside your goals per match over time gives you a shot conversion rate. Improving that ratio — not just raw shot volume — is a concrete, measurable target.</p>
+
+  <h3>Saves and defensive positioning</h3>
+  <p>Save rate per match correlates strongly with win rate at most ranks. Teams that concede fewer goals when the opponent is on target win more games. Tracking your saves over time gives you signal on whether your defensive positioning is improving or whether you are being caught out of position repeatedly.</p>
+
+  <h2>How to use Bakkboard for win rate analysis</h2>
+  <p>Bakkboard records every match locally and surfaces the patterns described above in its Analytics tab:</p>
+  <ul>
+    <li><strong>W/L history chart</strong> — full timeline of wins and losses, filterable by playlist and date range</li>
+    <li><strong>Win rate by hour of day</strong> — 24-hour breakdown of your win rate across all recorded matches</li>
+    <li><strong>Win rate by day of week</strong> — Mon–Sun breakdown to spot your best and worst days</li>
+    <li><strong>Play-style trends</strong> — goals, assists, saves and shots per match over time</li>
+    <li><strong>Shot tracking</strong> — shots on target and conversion rate trends</li>
+  </ul>
+  <p>All charts are filterable by playlist (1v1, 2v2, 3v3) and by time period (this week, this month, last 30/90 days, custom range). Switching between playlists often reveals that your win rate issues are specific to one format — and that is always useful to know.</p>
+
+  <h2>The one thing that matters most</h2>
+  <p>Play fewer matches when you are tilted. This sounds obvious and almost nobody does it consistently. The data in Bakkboard will show you that your worst losing streaks cluster around specific times and conditions. Once you can see it in your own history, it becomes easier to act on.</p>
+
+  <div class="cta-box">
+    <h3>Track your win rate and performance with Bakkboard</h3>
+    <p>Free · Local data · No account required · Works with Steam and Epic</p>
+    <a class="btn-dl" href="https://github.com/lorislorenzetti/bakkboard/releases/latest/download/Bakkboard.exe">↓ Download Bakkboard.exe</a>
+  </div>
+
+  <hr />
+  <p><a href="/blog/">← Back to Blog</a></p>
+</div>
+
+<footer>
+  <a href="/">Bakkboard</a> &nbsp;·&nbsp;
+  <a href="/blog/">Blog</a> &nbsp;·&nbsp;
+  Not affiliated with Psyonix or Epic Games.
+</footer>
+
+</body>
+</html>

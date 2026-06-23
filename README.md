@@ -40,10 +40,10 @@ No installation required. Double-click and play.
 ![Charts – local analytics](screenshots/Bakkboard_3.gif)
 
 ### 🖥️ Overlays
-- **Stats Bar** — matches played, W/L, win rate, streak and MMR delta. Switches playlist automatically
-- **Rank Badge** — current rank, division and MMR. Switches playlist automatically
+- **Stats Bar** — W/L, win rate, streak and MMR delta. Syncs with your dashboard selection
+- **Rank Badge** — current rank, division and MMR. Syncs with your dashboard selection
 - **Match Scoreboard** — both teams, scores and rank icons during active matches
-- **Magic Rank** — rank icons overlaid on the in-game scoreboard. Requires one-time calibration
+- **Magic Rank** — rank icons overlaid on the in-game scoreboard, pre-configured for all 16:9 resolutions
 - All overlays are positionable, scalable and opacity-adjustable
 - Optional auto-hide when Rocket League loses focus
 
@@ -51,6 +51,7 @@ No installation required. Double-click and play.
 
 ### 🎨 Cosmetics Swap
 - Apply custom decals, wheels and boosts via UPK file patching
+- Choose which item to use as the replace slot — any cosmetic you own
 - Select car body first — each body keeps its own decal slot
 - Originals backed up and restored in one click
 - No runtime injection — files are swapped at rest, not during gameplay
@@ -144,6 +145,14 @@ Bakkboard stores all data **locally on your machine** under `%LocalAppData%\Bakk
 ## Disclaimer
 
 Bakkboard is a third-party application and is not affiliated with Psyonix or Epic Games.
+
+---
+
+## Antivirus
+
+Bakkboard.exe is built with PyInstaller, which can trigger false positives in some antivirus engines. **64 out of 66 engines on VirusTotal report it as clean.** The 2 remaining flags are false positives caused by PyInstaller's bundling mechanism.
+
+[→ View VirusTotal scan](https://www.virustotal.com/gui/file/7245ccc0c4fbf962c0ae796d588cb407e2c76d2323c30d56d85663e23fd9c914)
 
 ---
 

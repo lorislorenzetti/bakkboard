@@ -85,7 +85,7 @@ nav {
 }
 
 /* ARTICLE */
-.article-wrap { max-width: 820px; margin: 0 auto; padding: 56px 24px 96px; }
+.article-wrap { max-width: 900px; margin: 0 auto; padding: 56px 48px 96px; }
 
 .article-meta {
   display: flex; align-items: center; gap: 10px;
@@ -154,5 +154,5 @@ footer a:hover { color: var(--text); }
 
 @media (max-width: 640px) {
   .nav-inner { padding: 0 16px; }
-  .article-wrap { padding: 40px 16px 64px; }
+  .article-wrap { padding: 40px 16px 64px; max-width: 100%; }
 }
