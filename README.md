@@ -2,7 +2,7 @@
 
 **The complete Rocket League toolkit. The best BakkesMod alternative in 2026.**
 
-Bakkboard runs alongside Rocket League and tracks everything that happens in your matches — live stats, win probability, MMR trends, overlays, cosmetics swap, workshop maps, custom sounds and more. Open it before a session and it takes care of the rest.
+Bakkboard runs alongside Rocket League and tracks everything that happens in your matches — live stats, MMR trends, overlays, cosmetics swap, custom ball, boost meter, workshop maps, custom sounds, quick chat and more. Open it before a session and it takes care of the rest.
 
 ---
 
@@ -22,7 +22,6 @@ No installation required. Double-click and play.
 - Event log with goal speeds and hard hits
 - Tracker.gg rank, peak rank and platform badge for every player — including those who left mid-match
 
-![Bakkboard – live match](screenshots/Bakkboard_1.gif)
 
 ### 👥 Player Tracking
 - Track anyone from the scoreboard
@@ -30,14 +29,42 @@ No installation required. Double-click and play.
 - Friends panel: compare, hide or untrack per player
 - Open any player's Tracker.gg profile directly inside the app
 
-![Player tracking – Tracker.gg from scoreboard](screenshots/Bakkboard_2.gif)
 
 ### 📈 Charts & Analytics
 - Local: W/L timeline, play-style trends and shot tracking with custom date ranges
 - Tracker.gg: rating progression, lifetime stats, avg performance and play-style tables
 - Switch between your profile and any tracked player in one click
 
-![Charts – local analytics](screenshots/Bakkboard_3.gif)
+
+### 🎨 Cosmetics Swap
+- Apply custom bodies, decals, wheels, boosts and explosions via UPK file patching
+- Choose which item to use as the replace slot — any cosmetic you own
+- Select car body first — each body keeps its own decal slot
+- Originals backed up and restored in one click
+- No runtime injection — files are swapped at rest, not during gameplay
+
+
+### ⚽ Custom Ball
+- Works in both freeplay and online matches
+- Choose from pre-included ball designs or import your own
+- UPK & TFC file patching
+- Original backed up and restored in one click
+- No runtime injection — files are swapped at rest, not during gameplay
+
+
+### 🎛️ Custom Boost Meter
+- Choose from pre-included designs or import your own
+- UPK file patching
+- Original backed up and restored in one click
+- No runtime injection — files are swapped at rest, not during gameplay
+
+
+### 🗺️ Workshop Maps
+- Browse, search and load maps into Free Play in one click
+- Sort by downloads, rating, name, size or date
+- My Maps library for instant reuse of cached maps
+- Restore or remove the active map; delete from cache when done
+
 
 ### 🖥️ Overlays
 - **Stats Bar** — W/L, win rate, streak and MMR delta. Syncs with your dashboard selection
@@ -47,24 +74,6 @@ No installation required. Double-click and play.
 - All overlays are positionable, scalable and opacity-adjustable
 - Optional auto-hide when Rocket League loses focus
 
-![Overlays](screenshots/Bakkboard_4.gif)
-
-### 🎨 Cosmetics Swap
-- Apply custom decals, wheels and boosts via UPK file patching
-- Choose which item to use as the replace slot — any cosmetic you own
-- Select car body first — each body keeps its own decal slot
-- Originals backed up and restored in one click
-- No runtime injection — files are swapped at rest, not during gameplay
-
-![Cosmetics swap](screenshots/Bakkboard_5.gif)
-
-### 🗺️ Workshop Maps
-- Browse, search and load maps into Free Play in one click
-- Sort by downloads, rating, name, size or date
-- My Maps library for instant reuse of cached maps
-- Restore or remove the active map; delete from cache when done
-
-![Workshop maps](screenshots/Bakkboard_6.gif)
 
 ### 🔊 Custom Sounds
 - Play custom audio clips on in-game events: goals, saves, demolitions, crossbars
@@ -74,7 +83,12 @@ No installation required. Double-click and play.
 - Independent volume per sound and a global volume control
 - Choose whether each event triggers for you, your team or everyone
 
-![Custom sounds](screenshots/Bakkboard_7.gif)
+
+### 💬 Quick Chat
+- Add any custom message and send it instantly with a key press
+- Bind any keyboard key combination or controller button sequence as trigger
+- Choose the scope for each chat: Global, Team or Party
+
 
 ### 🎲 Win Probability
 - Live bar updated every second
@@ -124,6 +138,8 @@ Bakkboard never touches the game process. Easy Anti-Cheat never sees it — beca
 | **Overlays** | Separate windows rendered by the OS as normal applications. They sit on top of the screen just like a browser or Discord — completely outside the game process. |
 | **Workshop maps** | Map files are copied to the correct game directory before launch, the same way the game expects them. No runtime modification of any kind. |
 | **Custom sounds** | Audio files are played by the app's own audio engine in response to events from the Stats API. Nothing is injected — sounds play in a separate process, like any media player running alongside the game. |
+| **Custom ball & boost meter** | UPK and TFC files are patched on disk before the game launches. The game loads the custom assets through its normal file pipeline — exactly like any other texture. Nothing is injected at runtime. |
+| **Quick chat** | Messages are sent by simulating real keyboard input via the Windows `SendInput` API — exactly as if you typed it yourself, but instantly. No game memory access, no injection. |
 
 ---
 
@@ -150,9 +166,9 @@ Bakkboard is a third-party application and is not affiliated with Psyonix or Epi
 
 ## Antivirus
 
-Bakkboard.exe is built with PyInstaller, which can trigger false positives in some antivirus engines. **64 out of 66 engines on VirusTotal report it as clean.** The 2 remaining flags are false positives caused by PyInstaller's bundling mechanism.
+Bakkboard.exe is scanned and verified clean. **0 detections out of 68 antivirus engines on VirusTotal.**
 
-[→ View VirusTotal scan](https://www.virustotal.com/gui/file/7245ccc0c4fbf962c0ae796d588cb407e2c76d2323c30d56d85663e23fd9c914)
+[→ View VirusTotal scan](https://www.virustotal.com/gui/file/fce83e01a373c533f253e2065d6d40ada0b2d414cc884d5ac02d95b3037100a0)
 
 ---
 

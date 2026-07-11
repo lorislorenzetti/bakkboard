@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rocket League Custom Quick Chat — Send Any Message Instantly (2026) | Bakkboard</title>
+  <meta name="description" content="Send fully custom chat messages in Rocket League with a single key press. Configure any text, bind any key or controller button, choose Global, Team or Party scope." />
+  <link rel="canonical" href="https://bakkboard.gg/blog/rocket-league-quick-chat-2026.html" />
+  <link rel="icon" type="image/x-icon" href="../icons/favicon.ico" />
+  <link rel="stylesheet" href="blog.css" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-P2RBXCP2QT"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-P2RBXCP2QT');
+  </script></head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="/">
+      <img src="../icons/icon-192.png" alt="Bakkboard logo" style="width:28px;height:28px;border-radius:6px;vertical-align:middle;margin-right:8px;" />
+      <span>Bakkboard</span>
+    </a>
+    <div class="nav-links">
+      <a href="/#how-it-works" style="color:var(--text-dim);text-decoration:none;font-size:14px;">How it works</a>
+      <a href="/blog/" style="color:var(--text-dim);text-decoration:none;font-size:14px;">Blog</a>
+      <a href="/changelog" style="color:var(--text-dim);text-decoration:none;font-size:14px;">Changelog</a>
+      <a class="btn-nav-dl" href="https://github.com/lorislorenzetti/bakkboard/releases/latest/download/Bakkboard.exe">Download</a>
+    </div>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-mobile-menu" id="nav-mobile-menu">
+  <a href="/#how-it-works">How it works</a>
+  <a href="/blog/">Blog</a>
+  <a href="/changelog">Changelog</a>
+  <a class="btn-nav-dl" href="https://github.com/lorislorenzetti/bakkboard/releases/latest/download/Bakkboard.exe">Download</a>
+</div>
+<script>
+  const _hbBtn = document.getElementById('nav-hamburger');
+  const _hbMenu = document.getElementById('nav-mobile-menu');
+  _hbBtn.addEventListener('click', () => {
+    const open = _hbMenu.classList.toggle('open');
+    _hbBtn.classList.toggle('open', open);
+  });
+  _hbMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      _hbMenu.classList.remove('open');
+      _hbBtn.classList.remove('open');
+    });
+  });
+</script>
+
+<div class="article-wrap">
+  <div class="article-meta">
+    <span class="article-tag">Quick Chat</span>
+    <span>July 2026</span>
+    <span>·</span>
+    <span>4 min read</span>
+  </div>
+
+  <h1>Rocket League Custom Quick Chat — Send Any Message Instantly</h1>
+  <p class="lead">Rocket League's built-in quick chat gives you a fixed list of preset phrases. Bakkboard's Quick Chat feature breaks that limit: add any text you want, bind it to any key or controller button, and send it instantly during a match.</p>
+
+  <img src="https://cdn.bakkboard.gg/assets/Backboard_10.gif" alt="Bakkboard custom quick chat" class="article-img" />
+  <p class="img-caption">Configuring custom quick chat messages and key bindings in Bakkboard.</p>
+
+  <h2>What custom quick chat does</h2>
+  <p>With Bakkboard's Quick Chat tab you can create your own chat shortcuts that work exactly like the built-in quick chat — but with any text you choose. Each entry has three configurable parts:</p>
+  <ul>
+    <li><strong>Message text</strong> — any string, any length.</li>
+    <li><strong>Trigger</strong> — a keyboard key, a modifier combination, or a controller button.</li>
+    <li><strong>Chat scope</strong> — <strong>Global</strong> (all players), <strong>Team</strong> (your teammates only), or <strong>Party</strong> (your party only).</li>
+  </ul>
+  <p>Press the trigger while Rocket League is in the foreground and the message appears in chat immediately, in the right channel, without you needing to open the chat input or navigate any menu.</p>
+
+  <h2>How to set it up</h2>
+  <ol>
+    <li>Open <strong>Bakkboard</strong> and go to the <strong>Quick Chat</strong> tab.</li>
+    <li>Click <strong>Add</strong> to create a new entry.</li>
+    <li>Type your message in the text field.</li>
+    <li>Click the key cell next to the entry. Bakkboard listens for your next input — press any key or controller button to bind it.</li>
+    <li>Select the chat scope: <strong>Global</strong>, <strong>Team</strong> or <strong>Party</strong>.</li>
+    <li>That is it. The entry is saved automatically.</li>
+  </ol>
+  <p>Your quick chat list persists across sessions. You can edit or remove any entry at any time from the same tab.</p>
+
+  <h2>Multiple messages, multiple bindings</h2>
+  <p>There is no limit on how many custom quick chat entries you can create. Each one has its own independent key binding and scope, so you can have a full set of shortcuts covering different situations — a team callout on one key, an "I got it" message on another, a party-only joke on a third. Controller and keyboard bindings can be mixed freely.</p>
+
+  <h2>How it works</h2>
+  <p>Bakkboard runs in the background while you play. When it detects your trigger key while Rocket League is the active window, it sends the message through standard input simulation — <strong>no injection, no memory access, no DLL hooking</strong>. From Rocket League's perspective it receives the same input as any other message typed by the player. Easy Anti-Cheat sees nothing unusual.</p>
+  <p>Because Bakkboard only acts when Rocket League is in the foreground, there is no risk of accidentally firing a message while you are tabbed out.</p>
+
+  <div class="cta-box">
+    <h3>Set up custom quick chat with Bakkboard</h3>
+    <p>Free · No injection · Works with Steam and Epic</p>
+    <a class="btn-dl" href="https://github.com/lorislorenzetti/bakkboard/releases/latest/download/Bakkboard.exe">↓ Download Bakkboard.exe</a>
+  </div>
+
+  <hr />
+  <p><a href="/blog/">← Back to Blog</a></p>
+</div>
+
+<footer>
+  <a href="/">Bakkboard</a> &nbsp;·&nbsp;
+  <a href="/blog/">Blog</a> &nbsp;·&nbsp;
+  Not affiliated with Psyonix or Epic Games.
+</footer>
+
+</body>
+</html>
