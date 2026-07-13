@@ -305,6 +305,7 @@
       <a href="/#how-it-works" style="color:var(--text-dim);text-decoration:none;font-size:14px;">How it works</a>
       <a href="/blog/" style="color:var(--text-dim);text-decoration:none;font-size:14px;">Blog</a>
       <a href="/changelog" style="color:var(--text);text-decoration:none;font-size:14px;font-weight:600;">Changelog</a>
+      <a href="/feedback.html" style="color:var(--text-dim);text-decoration:none;font-size:14px;">Feedback</a>
       <a class="btn-nav-dl" href="https://github.com/lorislorenzetti/bakkboard/releases/latest/download/Bakkboard.exe">Download</a>
     </div>
     <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
@@ -316,6 +317,7 @@
   <a href="/#how-it-works">How it works</a>
   <a href="/blog/">Blog</a>
   <a href="/changelog">Changelog</a>
+  <a href="/feedback.html">Feedback</a>
   <a class="btn-nav-dl" href="https://github.com/lorislorenzetti/bakkboard/releases/latest/download/Bakkboard.exe">Download</a>
 </div>
 <script>
@@ -385,7 +387,7 @@
         container.appendChild(el);
       });
     } catch (e) {
-      container.innerHTML = `<p class="cl-error">Could not load releases. <a href="https://github.com/lorislorenzetti/bakkboard/releases" style="color:var(--blue)">View on GitHub →</a></p>`;
+      container.innerHTML = `<p class="cl-error">Could not load releases. Please try again later.</p>`;
     }
   }
 

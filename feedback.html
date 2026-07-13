@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feedback & Issues — Bakkboard</title>
+  <meta name="description" content="Report a bug, request a feature, or send feedback about Bakkboard." />
+  <link rel="canonical" href="https://bakkboard.gg/feedback" />
+  <link rel="icon" type="image/x-icon" href="icons/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0b0f16;
+      --bg-panel:  #131920;
+      --bg-card:   #161d28;
+      --border:    #252d3a;
+      --text:      #e4ecf4;
+      --text-dim:  #7a8899;
+      --blue:      #58a6ff;
+      --green:     #3fb950;
+      --radius:    10px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(16,22,32,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      height: 64px;
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 48px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .nav-logo img { width: 28px; height: 28px; border-radius: 6px; }
+    .nav-links { display: flex; gap: 24px; align-items: center; }
+    .nav-links a {
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.15s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .btn-nav-dl {
+      background: var(--blue);
+      color: #fff !important;
+      font-weight: 600;
+      font-size: 13px;
+      padding: 7px 16px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+    .btn-nav-dl:hover { opacity: 0.85; }
+
+    /* ── HAMBURGER ── */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 36px;
+      height: 36px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 6px;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-mobile-menu {
+      display: none;
+      position: fixed;
+      top: 64px;
+      left: 0; right: 0;
+      background: rgba(16,22,32,0.98);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      flex-direction: column;
+      padding: 16px 24px 24px;
+      gap: 4px;
+      z-index: 99;
+    }
+    .nav-mobile-menu.open { display: flex; }
+    .nav-mobile-menu a {
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 16px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+      transition: color 0.15s;
+    }
+    .nav-mobile-menu a:last-child { border-bottom: none; }
+    .nav-mobile-menu a:hover { color: var(--text); }
+    .nav-mobile-menu .btn-nav-dl {
+      color: #fff !important;
+      margin-top: 8px;
+      text-align: center;
+      padding: 12px 16px;
+      border-bottom: none;
+    }
+
+    /* ── PAGE ── */
+    .page-inner {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 64px 24px 96px;
+    }
+
+    .page-header {
+      margin-bottom: 40px;
+    }
+    .page-header h1 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .page-header p {
+      color: var(--text-dim);
+      font-size: 15px;
+    }
+
+    /* ── FORM ── */
+    .feedback-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    label .req { color: var(--blue); margin-left: 2px; }
+
+    input[type="text"],
+    input[type="email"],
+    select,
+    textarea {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--text);
+      font-family: inherit;
+      font-size: 14px;
+      padding: 10px 14px;
+      transition: border-color 0.15s;
+      outline: none;
+      width: 100%;
+    }
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--blue);
+    }
+    select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237a8899' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px;
+      cursor: pointer;
+    }
+    select option { background: var(--bg-card); }
+    textarea { resize: vertical; min-height: 120px; }
+
+    .form-hint {
+      font-size: 12px;
+      color: var(--text-dim);
+      margin-top: 2px;
+    }
+
+    .btn-submit {
+      background: var(--blue);
+      color: #fff;
+      font-weight: 600;
+      font-size: 15px;
+      padding: 12px 28px;
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: opacity 0.15s;
+      align-self: flex-start;
+    }
+    .btn-submit:hover { opacity: 0.85; }
+    .btn-submit:disabled { opacity: 0.5; cursor: default; }
+
+    /* ── SUCCESS ── */
+    .success-box {
+      display: none;
+      background: rgba(63,185,80,0.1);
+      border: 1px solid rgba(63,185,80,0.3);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin-top: 8px;
+    }
+    .success-box h3 { font-size: 16px; color: var(--green); margin-bottom: 6px; }
+    .success-box p { font-size: 14px; color: var(--text-dim); }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 32px;
+      color: var(--text-dim);
+      font-size: 13px;
+      border-top: 1px solid var(--border);
+    }
+    footer a { color: var(--text-dim); text-decoration: none; }
+    footer a:hover { color: var(--text); }
+
+    @media (max-width: 600px) {
+      .nav-inner { padding: 0 16px; }
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+    }
+  </style>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-P2RBXCP2QT"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-P2RBXCP2QT');
+  </script>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="/">
+      <img src="icons/icon-192.png" alt="Bakkboard logo" style="width:28px;height:28px;border-radius:6px;vertical-align:middle;margin-right:8px;" />
+      <span>Bakkboard</span>
+    </a>
+    <div class="nav-links">
+      <a href="/#how-it-works" style="color:var(--text-dim);text-decoration:none;font-size:14px;">How it works</a>
+      <a href="/blog/" style="color:var(--text-dim);text-decoration:none;font-size:14px;">Blog</a>
+      <a href="/changelog" style="color:var(--text-dim);text-decoration:none;font-size:14px;">Changelog</a>
+      <a href="/feedback.html" style="color:var(--text)">Feedback</a>
+      <a class="btn-nav-dl" href="https://github.com/lorislorenzetti/bakkboard/releases/latest/download/Bakkboard.exe" onclick="gtag('event','download_click',{event_category:'download',event_label:'nav'})">Download</a>
+    </div>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-mobile-menu" id="nav-mobile-menu">
+  <a href="/#how-it-works">How it works</a>
+  <a href="/blog/">Blog</a>
+  <a href="/changelog">Changelog</a>
+  <a href="/feedback.html">Feedback</a>
+  <a class="btn-nav-dl" href="https://github.com/lorislorenzetti/bakkboard/releases/latest/download/Bakkboard.exe" onclick="gtag('event','download_click',{event_category:'download',event_label:'nav_mobile'})">Download</a>
+</div>
+<script>
+  const _hbBtn = document.getElementById('nav-hamburger');
+  const _hbMenu = document.getElementById('nav-mobile-menu');
+  _hbBtn.addEventListener('click', () => {
+    const open = _hbMenu.classList.toggle('open');
+    _hbBtn.classList.toggle('open', open);
+  });
+  _hbMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      _hbMenu.classList.remove('open');
+      _hbBtn.classList.remove('open');
+    });
+  });
+</script>
+
+<div class="page-inner">
+  <div class="page-header" id="page-header">
+    <h1>Feedback &amp; Issues</h1>
+    <p>Found a bug, have a feature request, or just want to say something? Fill in the form below and it'll land straight in my inbox.</p>
+  </div>
+
+  <form class="feedback-form" id="feedback-form" action="https://formspree.io/f/mnjeqrzb" method="POST">
+
+    <div class="form-group">
+      <label for="type">Type of request <span class="req">*</span></label>
+      <select id="type" name="type" required>
+        <option value="" disabled selected>Select…</option>
+        <option value="Bug / Crash">Bug / Crash</option>
+        <option value="Feature request">Feature request</option>
+        <option value="Question">Question</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description <span class="req">*</span></label>
+      <textarea id="description" name="description" required placeholder="Describe the bug or your request in as much detail as you can…"></textarea>
+    </div>
+
+    <div class="form-group" id="steps-group">
+      <label for="steps">Steps to reproduce</label>
+      <textarea id="steps" name="steps" style="min-height:80px" placeholder="1. Open the app&#10;2. Go to…&#10;3. …"></textarea>
+      <span class="form-hint">Only relevant for bugs — skip if not applicable.</span>
+    </div>
+
+    <div class="form-group">
+      <label for="version">App version</label>
+      <input type="text" id="version" name="version" placeholder="e.g. 1.3.0 — shown in the About page" />
+    </div>
+
+    <div class="form-group">
+      <label for="os">Windows version</label>
+      <select id="os" name="os">
+        <option value="" selected>Not specified</option>
+        <option value="Windows 11">Windows 11</option>
+        <option value="Windows 10">Windows 10</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Your email</label>
+      <input type="email" id="email" name="email" placeholder="Optional — if you want a reply" />
+      <span class="form-hint">Only used to reply to you. Never shared.</span>
+    </div>
+
+    <!-- honeypot -->
+    <input type="text" name="_gotcha" style="display:none" />
+    <input type="hidden" name="_subject" value="Bakkboard feedback" />
+
+    <button type="submit" class="btn-submit" id="submit-btn">Send feedback</button>
+
+    <div class="success-box" id="success-box">
+      <h3>Thanks!</h3>
+      <p>Your message has been received. I'll get back to you as soon as possible if you left an email.</p>
+    </div>
+  </form>
+</div>
+
+<footer>
+  Made with ♥ by Loris Lorenzetti
+  &nbsp;·&nbsp;
+  Not affiliated with Psyonix or Epic Games.
+</footer>
+
+<script>
+  const form = document.getElementById('feedback-form');
+  const btn  = document.getElementById('submit-btn');
+  const succ = document.getElementById('success-box');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        if (typeof gtag === 'function') {
+          gtag('event', 'feedback_submit', { event_category: 'feedback', event_label: document.getElementById('type').value });
+        }
+        form.querySelectorAll('.form-group,button').forEach(el => el.style.display = 'none');
+        succ.style.display = 'block';
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Send feedback';
+        alert('Something went wrong. Please try again.');
+      }
+    } catch {
+      btn.disabled = false;
+      btn.textContent = 'Send feedback';
+      alert('Network error. Please try again.');
+    }
+  });
+</script>
+</body>
+</html>
