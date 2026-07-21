@@ -4,12 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bakkboard — The complete Rocket League toolkit</title>
-  <meta name="description" content="Bakkboard tracks your Rocket League sessions in real time — live stats, win probability, MMR trends, overlays, cosmetics swap, workshop maps, custom sounds and more. Free, portable, no install." />
+  <meta name="description" content="Bakkboard tracks your Rocket League sessions in real time — live stats, win probability, MMR trends, overlays and cosmetics. Free, no install." />
   <meta property="og:title" content="Bakkboard — The complete Rocket League toolkit" />
   <meta property="og:description" content="The best BakkesMod alternative in 2026. Live stats, win probability, MMR trends, overlays, cosmetics swap, workshop maps and custom sounds for Rocket League. Free, portable, no install." />
   <meta property="og:image" content="https://bakkboard.gg/og_image.png" />
   <meta property="og:url" content="https://bakkboard.gg" />
   <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Bakkboard" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Bakkboard — The complete Rocket League toolkit" />
   <meta name="twitter:description" content="The best BakkesMod alternative in 2026. Live stats, win probability, MMR trends, overlays, cosmetics swap, workshop maps and custom sounds for Rocket League. Free, portable, no install." />
@@ -20,6 +21,23 @@
   <link rel="icon" type="image/x-icon" href="icons/favicon.ico" />
   <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png" />
   <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Bakkboard",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Windows",
+    "description": "Bakkboard tracks your Rocket League sessions in real time — live stats, win probability, MMR trends, overlays, cosmetics swap, workshop maps and custom sounds.",
+    "url": "https://bakkboard.gg",
+    "image": "https://bakkboard.gg/og_image.png",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -32,10 +50,16 @@
       --text-dim:  #7a8899;
       --blue:      #58a6ff;
       --green:     #3fb950;
+      --violet:    #a371f7;
       --radius:    10px;
     }
 
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+    }
 
     body {
       background: var(--bg);
@@ -182,7 +206,13 @@
       line-height: 1.1;
       margin-bottom: 20px;
     }
-    .hero h1 span { color: var(--blue); }
+    .hero h1 span {
+      background: linear-gradient(100deg, var(--blue), var(--violet));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: var(--blue);
+    }
     .hero p {
       font-size: 18px;
       color: var(--text-dim);
@@ -324,7 +354,6 @@
       0%, 100% { opacity: 1; transform: scale(1); }
       50%       { opacity: 0.45; transform: scale(0.7); }
     }
-
     /* ── VIDEO ── */
     .video-wrap {
       max-width: 900px;
@@ -410,7 +439,6 @@
     }
     .spotlight.rev { grid-template-columns: 1.5fr 1fr; }
     .spotlight.rev .spotlight-media { order: -1; }
-    .spotlight-content {}
     .spotlight-tag {
       display: inline-flex;
       align-items: center;
@@ -481,8 +509,6 @@
     }
 
     /* ── HOW IT WORKS ── */
-    .how-it-works {
-    }
     .how-it-works .section-label {
       font-size: 11px;
       font-weight: 700;
@@ -688,15 +714,15 @@
 <!-- HERO -->
 <div class="hero">
   <h1>The complete<br><span>Rocket League</span> toolkit.</h1>
-  <p>Live stats, MMR trends, overlays, cosmetics swap, custom ball, boost meter, workshop maps, custom sounds, quick chat and more — all in one portable app.</p>
+  <p>Live stats, MMR trends, overlays, cosmetics swap, workshop maps, custom sounds, quick chat and more — all in one portable app.</p>
   <p class="hero-alt">The best BakkesMod alternative in 2026.</p>
   <div class="hero-cta">
     <a class="btn-primary" href="https://github.com/lorislorenzetti/bakkboard/releases/latest/download/Bakkboard.exe" onclick="gtag('event','download_click',{event_category:'download',event_label:'hero'})">
       ↓ Download Bakkboard.exe
     </a>
   </div>
-  <div class="hero-vt" style="display:flex; justify-content:center; margin-top:4px;">
-    <a class="vt-card" href="https://www.virustotal.com/gui/file/f90ca24acc17aee8298042ac7faa4c87f34bd614af2a8c8aa2d9bb0e462c9a2e" target="_blank" rel="noopener">
+  <div class="hero-vt" style="display:flex; justify-content:center; flex-wrap:wrap; gap:12px; margin-top:4px;">
+    <a class="vt-card" href="https://www.virustotal.com/gui/file/b7cb77afe8098540e2a2353d160229164f76d7c4f7c1190fd12c63d3c9b67ba6" target="_blank" rel="noopener">
       <svg class="vt-shield" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#3fb950" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="7 12 10.5 15.5 17 9"/></svg>
       <div>
         <div style="font-size:11px; font-weight:700; letter-spacing:.08em; color:#7a8899; text-transform:uppercase; margin-bottom:2px;">VirusTotal</div>
@@ -727,7 +753,7 @@
       </ul>
     </div>
     <div class="spotlight-media reveal-right">
-      <img src="https://cdn.bakkboard.gg/assets/Backboard_1.gif" alt="Bakkboard – live match" />
+      <img src="https://cdn.bakkboard.gg/assets/Bakkboard_1.gif" alt="Bakkboard – live match" />
     </div>
   </div>
 </div>
@@ -748,7 +774,7 @@
       </ul>
     </div>
     <div class="spotlight-media reveal-left">
-      <img src="https://cdn.bakkboard.gg/assets/Backboard_2.gif" alt="Player tracking – Tracker.gg from scoreboard" />
+      <img src="https://cdn.bakkboard.gg/assets/Bakkboard_2.gif" alt="Player tracking – Tracker.gg from scoreboard" />
     </div>
   </div>
 </div>
@@ -768,7 +794,7 @@
       </ul>
     </div>
     <div class="spotlight-media reveal-right">
-      <img src="https://cdn.bakkboard.gg/assets/Backboard_3.gif" alt="Charts – local analytics" />
+      <img src="https://cdn.bakkboard.gg/assets/Bakkboard_3.gif" alt="Charts – local analytics" />
     </div>
   </div>
 </div>
@@ -780,9 +806,9 @@
   <div class="spotlight rev">
     <div class="spotlight-content reveal-right">
       <div class="spotlight-tag"><span class="spotlight-tag-icon">🎨</span>Cosmetics Swap</div>
-      <div class="spotlight-title">Custom bodies, decals,<br>wheels, boosts and explosions.</div>
+      <div class="spotlight-title">Swap bodies, decals,<br>wheels, boosts and explosions.</div>
       <ul class="spotlight-bullets">
-        <li>Apply custom bodies, decals, wheels, boosts and explosions via UPK file patching</li>
+        <li>Swap bodies, decals, wheels, boosts and explosions via UPK file patching</li>
         <li>Choose which item to use as the replace slot — any cosmetic you own</li>
         <li>Select car body first — each body keeps its own decal slot</li>
         <li>Originals backed up and restored in one click</li>
@@ -790,18 +816,40 @@
       </ul>
     </div>
     <div class="spotlight-media reveal-left">
-      <img src="https://cdn.bakkboard.gg/assets/Backboard_4.gif" alt="Cosmetics swap" />
+      <img src="https://cdn.bakkboard.gg/assets/Bakkboard_4.gif" alt="Cosmetics swap" />
     </div>
   </div>
 </div>
 </section>
 
-<!-- CUSTOM BALL -->
+<!-- CUSTOM DECALS -->
 <section>
 <div class="section-inner">
   <div class="spotlight">
     <div class="spotlight-content reveal-left">
-      <div class="spotlight-tag"><span class="spotlight-tag-icon">⚽</span>Custom Ball</div>
+      <div class="spotlight-tag"><span class="spotlight-tag-icon">🏷️</span>Custom Decals</div>
+      <div class="spotlight-title">Swap the decal,<br>any design you want.</div>
+      <ul class="spotlight-bullets">
+        <li>Works in both freeplay and online matches</li>
+        <li>Choose from pre-included decal designs or import your own</li>
+        <li>UPK file patching</li>
+        <li>Original backed up and restored in one click</li>
+        <li>No runtime injection — files are swapped at rest, not during gameplay</li>
+      </ul>
+    </div>
+    <div class="spotlight-media reveal-right">
+      <img src="https://cdn.bakkboard.gg/assets/Bakkboard_11.gif" alt="Custom decals" />
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- CUSTOM BALLS -->
+<section>
+<div class="section-inner">
+  <div class="spotlight rev">
+    <div class="spotlight-content reveal-right">
+      <div class="spotlight-tag"><span class="spotlight-tag-icon">⚽</span>Custom Balls</div>
       <div class="spotlight-title">Swap the ball,<br>any design you want.</div>
       <ul class="spotlight-bullets">
         <li>Works in both freeplay and online matches</li>
@@ -811,29 +859,29 @@
         <li>No runtime injection — files are swapped at rest, not during gameplay</li>
       </ul>
     </div>
-    <div class="spotlight-media reveal-right">
-      <img src="https://cdn.bakkboard.gg/assets/Backboard_5.gif" alt="Custom ball" />
+    <div class="spotlight-media reveal-left">
+      <img src="https://cdn.bakkboard.gg/assets/Bakkboard_5.gif" alt="Custom ball" />
     </div>
   </div>
 </div>
 </section>
 
-<!-- CUSTOM BOOST METER -->
+<!-- CUSTOM BOOST METERS -->
 <section>
 <div class="section-inner">
-  <div class="spotlight rev">
-    <div class="spotlight-content reveal-right">
-      <div class="spotlight-tag"><span class="spotlight-tag-icon">🎛️</span>Custom Boost Meter</div>
+  <div class="spotlight">
+    <div class="spotlight-content reveal-left">
+      <div class="spotlight-tag"><span class="spotlight-tag-icon">🎛️</span>Custom Boost Meters</div>
       <div class="spotlight-title">Swap the boost meter,<br>any design you want.</div>
       <ul class="spotlight-bullets">
-        <li>Choose from pre-included designs or import your own</li>
+        <li>Choose from pre-included boost meter designs or import your own</li>
         <li>UPK file patching</li>
         <li>Original backed up and restored in one click</li>
         <li>No runtime injection — files are swapped at rest, not during gameplay</li>
       </ul>
     </div>
-    <div class="spotlight-media reveal-left">
-      <img src="https://cdn.bakkboard.gg/assets/Backboard_6.gif" alt="Custom boost meter" />
+    <div class="spotlight-media reveal-right">
+      <img src="https://cdn.bakkboard.gg/assets/Bakkboard_6.gif" alt="Custom boost meter" />
     </div>
   </div>
 </div>
@@ -842,8 +890,8 @@
 <!-- WORKSHOP -->
 <section>
 <div class="section-inner">
-  <div class="spotlight">
-    <div class="spotlight-content reveal-left">
+  <div class="spotlight rev">
+    <div class="spotlight-content reveal-right">
       <div class="spotlight-tag"><span class="spotlight-tag-icon">🗺️</span>Workshop Maps</div>
       <div class="spotlight-title">Train on any map,<br>in one click.</div>
       <ul class="spotlight-bullets">
@@ -853,8 +901,8 @@
         <li>Restore or remove the active map; delete from cache when done</li>
       </ul>
     </div>
-    <div class="spotlight-media reveal-right">
-      <img src="https://cdn.bakkboard.gg/assets/Backboard_7.gif" alt="Workshop maps" />
+    <div class="spotlight-media reveal-left">
+      <img src="https://cdn.bakkboard.gg/assets/Bakkboard_7.gif" alt="Workshop maps" />
     </div>
   </div>
 </div>
@@ -863,21 +911,22 @@
 <!-- OVERLAYS -->
 <section>
 <div class="section-inner">
-  <div class="spotlight rev">
-    <div class="spotlight-content reveal-right">
+  <div class="spotlight">
+    <div class="spotlight-content reveal-left">
       <div class="spotlight-tag"><span class="spotlight-tag-icon">🖥️</span>Overlays</div>
-      <div class="spotlight-title">Your stats,<br>always in view.</div>
+      <div class="spotlight-title">Everything on screen,<br>exactly where you need it.</div>
       <ul class="spotlight-bullets">
         <li><strong>Stats Bar</strong> — W/L, win rate, streak and MMR delta. Syncs with your dashboard selection</li>
         <li><strong>Rank Badge</strong> — current rank, division and MMR. Syncs with your dashboard selection</li>
         <li><strong>Match Scoreboard</strong> — both teams, scores and rank icons during active matches</li>
         <li><strong>Magic Rank</strong> — rank icons overlaid on the in-game scoreboard, pre-configured for all 16:9 resolutions</li>
+        <li><strong>Goal Replay Stats</strong> — scorer's lifetime stats and rank shown next to the native "SCORED BY" banner during replays</li>
         <li>All overlays are positionable, scalable and opacity-adjustable</li>
         <li>Optional auto-hide when Rocket League loses focus</li>
       </ul>
     </div>
-    <div class="spotlight-media reveal-left">
-      <img src="https://cdn.bakkboard.gg/assets/Backboard_8.gif" alt="Bakkboard overlays" />
+    <div class="spotlight-media reveal-right">
+      <img src="https://cdn.bakkboard.gg/assets/Bakkboard_8_v2.gif" alt="Bakkboard overlays" />
     </div>
   </div>
 </div>
@@ -886,8 +935,8 @@
 <!-- CUSTOM SOUNDS -->
 <section>
 <div class="section-inner">
-  <div class="spotlight">
-    <div class="spotlight-content reveal-left">
+  <div class="spotlight rev">
+    <div class="spotlight-content reveal-right">
       <div class="spotlight-tag"><span class="spotlight-tag-icon">🔊</span>Custom Sounds</div>
       <div class="spotlight-title">Your sounds,<br>your game.</div>
       <ul class="spotlight-bullets">
@@ -899,8 +948,8 @@
         <li>Choose whether each event triggers for you, your team or everyone</li>
       </ul>
     </div>
-    <div class="spotlight-media reveal-right">
-      <img src="https://cdn.bakkboard.gg/assets/Backboard_9.gif" alt="Custom sounds" />
+    <div class="spotlight-media reveal-left">
+      <img src="https://cdn.bakkboard.gg/assets/Bakkboard_9.gif" alt="Custom sounds" />
     </div>
   </div>
 </div>
@@ -909,8 +958,8 @@
 <!-- QUICK CHAT -->
 <section>
 <div class="section-inner">
-  <div class="spotlight rev">
-    <div class="spotlight-content reveal-right">
+  <div class="spotlight">
+    <div class="spotlight-content reveal-left">
       <div class="spotlight-tag"><span class="spotlight-tag-icon">💬</span>Quick Chat</div>
       <div class="spotlight-title">Your words,<br>your way.</div>
       <ul class="spotlight-bullets">
@@ -919,8 +968,8 @@
         <li>Choose the scope for each chat: Global, Team or Party</li>
       </ul>
     </div>
-    <div class="spotlight-media reveal-left">
-      <img src="https://cdn.bakkboard.gg/assets/Backboard_10.gif" alt="Quick chat" />
+    <div class="spotlight-media reveal-right">
+      <img src="https://cdn.bakkboard.gg/assets/Bakkboard_10.gif" alt="Quick chat" />
     </div>
   </div>
 </div>
@@ -1004,6 +1053,10 @@
       <p>UPK files are patched on disk before the game launches. The game loads them through its normal file loading — exactly like loading any other game asset. Easy Anti-Cheat does not scan file content at rest.</p>
     </div>
     <div class="hiw-card reveal">
+      <div class="hiw-card-title"><span class="hiw-icon">🏷️</span>Custom decals</div>
+      <p>UPK and TFC files are patched on disk before the game launches, the same way as any other cosmetics swap. Easy Anti-Cheat does not scan file content at rest.</p>
+    </div>
+    <div class="hiw-card reveal">
       <div class="hiw-card-title"><span class="hiw-icon">🖥️</span>Overlays</div>
       <p>Separate windows rendered by the OS as normal applications. They sit on top of the screen just like a browser or Discord — completely outside the game process.</p>
     </div>
@@ -1016,7 +1069,7 @@
       <p>Audio files are played by the app's own audio engine in response to events received from the Stats API. Nothing is injected into the game — the sounds play in a separate process, like any media player running alongside the game.</p>
     </div>
     <div class="hiw-card reveal">
-      <div class="hiw-card-title"><span class="hiw-icon">⚽</span>Custom ball &amp; boost meter</div>
+      <div class="hiw-card-title"><span class="hiw-icon">⚽</span>Custom balls &amp; boost meters</div>
       <p>UPK and TFC files are patched on disk before the game launches. The game loads the custom assets through its normal file pipeline — exactly like any other texture. Nothing is injected at runtime.</p>
     </div>
     <div class="hiw-card reveal">
@@ -1034,11 +1087,11 @@
 <!-- DOWNLOAD CTA -->
 <section>
 <div class="download-cta">
-  <h2 class="reveal">Ready to track your sessions?</h2>
+  <h2 class="reveal">Ready to level up?</h2>
   <a class="btn-primary reveal" style="transition-delay:0.15s" href="https://github.com/lorislorenzetti/bakkboard/releases/latest/download/Bakkboard.exe" onclick="gtag('event','download_click',{event_category:'download',event_label:'cta'})">
     ↓ Download Bakkboard.exe
   </a>
-  <p class="hero-note reveal" style="margin-top:16px;transition-delay:0.28s">Windows &nbsp;·&nbsp; Free &nbsp;·&nbsp; No account required</p>
+  <p class="hero-note reveal" style="margin-top:16px;transition-delay:0.28s">Windows &nbsp;·&nbsp; Free</p>
 </div>
 </section>
 
@@ -1060,32 +1113,6 @@
   }, { threshold: 0.12 });
 
   document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
-
-  // Live download counter with count-up animation
-  fetch('https://api.github.com/repos/lorislorenzetti/bakkboard/releases?per_page=100')
-    .then(r => r.json())
-    .then(releases => {
-      const total = releases.reduce((sum, r) =>
-        sum + r.assets.reduce((s, a) => s + a.download_count, 0), 0);
-      if (total <= 0) return;
-      const el = document.getElementById('dl-count');
-      const duration = 1400;
-      const steps = 40;
-      const interval = duration / steps;
-      let step = 0;
-      const timer = setInterval(() => {
-        step++;
-        const progress = step / steps;
-        // Ease out cubic
-        const eased = 1 - Math.pow(1 - progress, 3);
-        el.textContent = Math.round(eased * total).toLocaleString();
-        if (step >= steps) {
-          clearInterval(timer);
-          el.textContent = total.toLocaleString();
-        }
-      }, interval);
-    })
-    .catch(() => {});
 </script>
 </body>
 </html>

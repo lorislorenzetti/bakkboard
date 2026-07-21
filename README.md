@@ -2,7 +2,7 @@
 
 **The complete Rocket League toolkit. The best BakkesMod alternative in 2026.**
 
-Bakkboard runs alongside Rocket League and tracks everything that happens in your matches — live stats, MMR trends, overlays, cosmetics swap, custom ball, boost meter, workshop maps, custom sounds, quick chat and more. Open it before a session and it takes care of the rest.
+Bakkboard runs alongside Rocket League and tracks everything that happens in your matches — live stats, MMR trends, overlays, cosmetics swap, workshop maps, custom sounds, quick chat and more. Open it before a session and it takes care of the rest.
 
 ---
 
@@ -37,14 +37,22 @@ No installation required. Double-click and play.
 
 
 ### 🎨 Cosmetics Swap
-- Apply custom bodies, decals, wheels, boosts and explosions via UPK file patching
+- Swap bodies, decals, wheels, boosts and explosions via UPK file patching
 - Choose which item to use as the replace slot — any cosmetic you own
 - Select car body first — each body keeps its own decal slot
 - Originals backed up and restored in one click
 - No runtime injection — files are swapped at rest, not during gameplay
 
 
-### ⚽ Custom Ball
+### 🏷️ Custom Decals
+- Works in both freeplay and online matches
+- Choose from pre-included decal designs or import your own
+- UPK file patching
+- Original backed up and restored in one click
+- No runtime injection — files are swapped at rest, not during gameplay
+
+
+### ⚽ Custom Balls
 - Works in both freeplay and online matches
 - Choose from pre-included ball designs or import your own
 - UPK & TFC file patching
@@ -52,8 +60,8 @@ No installation required. Double-click and play.
 - No runtime injection — files are swapped at rest, not during gameplay
 
 
-### 🎛️ Custom Boost Meter
-- Choose from pre-included designs or import your own
+### 🎛️ Custom Boost Meters
+- Choose from pre-included boost meter designs or import your own
 - UPK file patching
 - Original backed up and restored in one click
 - No runtime injection — files are swapped at rest, not during gameplay
@@ -71,6 +79,7 @@ No installation required. Double-click and play.
 - **Rank Badge** — current rank, division and MMR. Syncs with your dashboard selection
 - **Match Scoreboard** — both teams, scores and rank icons during active matches
 - **Magic Rank** — rank icons overlaid on the in-game scoreboard, pre-configured for all 16:9 resolutions
+- **Goal Replay Stats** — scorer's lifetime stats and rank shown next to the native "SCORED BY" banner during replays
 - All overlays are positionable, scalable and opacity-adjustable
 - Optional auto-hide when Rocket League loses focus
 
@@ -135,10 +144,11 @@ Bakkboard never touches the game process. Easy Anti-Cheat never sees it — beca
 |---|---|
 | **Stats & match data** | Read from Rocket League's local Stats API — the same data the game exposes to the operating system. No process injection, no memory reading. |
 | **Cosmetics swap** | UPK files are patched on disk before the game launches. The game loads them through its normal file loading — exactly like any other game asset. Easy Anti-Cheat does not scan file content at rest. |
+| **Custom decals** | UPK and TFC files are patched on disk before the game launches, the same way as any other cosmetics swap. Easy Anti-Cheat does not scan file content at rest. |
 | **Overlays** | Separate windows rendered by the OS as normal applications. They sit on top of the screen just like a browser or Discord — completely outside the game process. |
 | **Workshop maps** | Map files are copied to the correct game directory before launch, the same way the game expects them. No runtime modification of any kind. |
 | **Custom sounds** | Audio files are played by the app's own audio engine in response to events from the Stats API. Nothing is injected — sounds play in a separate process, like any media player running alongside the game. |
-| **Custom ball & boost meter** | UPK and TFC files are patched on disk before the game launches. The game loads the custom assets through its normal file pipeline — exactly like any other texture. Nothing is injected at runtime. |
+| **Custom balls & boost meters** | UPK and TFC files are patched on disk before the game launches. The game loads the custom assets through its normal file pipeline — exactly like any other texture. Nothing is injected at runtime. |
 | **Quick chat** | Messages are sent by simulating real keyboard input via the Windows `SendInput` API — exactly as if you typed it yourself, but instantly. No game memory access, no injection. |
 
 ---
@@ -168,7 +178,7 @@ Bakkboard is a third-party application and is not affiliated with Psyonix or Epi
 
 Bakkboard.exe is scanned and verified clean. **0 detections out of 68 antivirus engines on VirusTotal.**
 
-[→ View VirusTotal scan](https://www.virustotal.com/gui/file/fce83e01a373c533f253e2065d6d40ada0b2d414cc884d5ac02d95b3037100a0)
+[→ View VirusTotal scan](https://www.virustotal.com/gui/file/b7cb77afe8098540e2a2353d160229164f76d7c4f7c1190fd12c63d3c9b67ba6)
 
 ---
 
