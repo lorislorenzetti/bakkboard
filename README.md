@@ -178,7 +178,7 @@ Bakkboard is a third-party application and is not affiliated with Psyonix or Epi
 
 Bakkboard.exe is scanned and verified clean. **0 detections out of 68 antivirus engines on VirusTotal.**
 
-[→ View VirusTotal scan](https://www.virustotal.com/gui/file/b7cb77afe8098540e2a2353d160229164f76d7c4f7c1190fd12c63d3c9b67ba6)
+[→ View VirusTotal scan](https://www.virustotal.com/gui/file/27f4b6d106ab181cc481655b5e0bd928e378fcc6bc843e1a1dbb5e31587c26c7)
 
 ---
 
