@@ -37,7 +37,7 @@ No installation required. Double-click and play.
 
 
 ### 🎨 Cosmetics Swap
-- Swap bodies, decals, wheels, boosts and explosions via UPK file patching
+- Swap car body, decal, paint finish, wheels, boost, topper, antenna, goal explosion, trail, engine audio, player banner and avatar border via UPK file patching
 - Choose which item to use as the replace slot — any cosmetic you own
 - Select car body first — each body keeps its own decal slot
 - Originals backed up and restored in one click
@@ -178,7 +178,7 @@ Bakkboard is a third-party application and is not affiliated with Psyonix or Epi
 
 Bakkboard.exe is scanned and verified clean. **0 detections out of 68 antivirus engines on VirusTotal.**
 
-[→ View VirusTotal scan](https://www.virustotal.com/gui/file/27f4b6d106ab181cc481655b5e0bd928e378fcc6bc843e1a1dbb5e31587c26c7)
+[→ View VirusTotal scan](https://www.virustotal.com/gui/file/6e7186a32cbe72ea415121bbbdd09a3d3f55be698ca0d56ca3945f3710daf1d8)
 
 ---
 
